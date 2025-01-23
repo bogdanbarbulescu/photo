@@ -61,7 +61,6 @@ body {
   cursor: pointer;
 }
 
-
 .navbar-menu {
   display: flex;
   list-style: none;
@@ -104,6 +103,12 @@ footer {
 .image-container {
   overflow: hidden;
   transition: transform .2s;
+  text-align: center;
+}
+
+.image-container img {
+  display: block;
+  margin: 0 auto;
 }
 
 .image-container:hover {
