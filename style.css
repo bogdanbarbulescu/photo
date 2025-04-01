@@ -1,55 +1,92 @@
-/* style.css (Landscape Photography Update) */
+/* style.css (Consolidated Landscape Photography Portfolio) */
 
+/* --- Root Variables --- */
 :root {
-  --bs-primary: #00b894; /* Define primary color - teal/green */
+  --bs-primary: #00b894; /* Teal/Green Accent */
   --bs-primary-rgb: 0, 184, 148;
-  --bs-secondary: #444; /* Dark gray secondary */
-  --bs-light: #f8f9fa;
-  --bs-dark: #212529;
-  --bs-body-color: #dee2e6; /* Lighter gray for body text on dark bg */
-  --bs-body-bg: #121212;
+  --bs-secondary: #444; /* Dark Gray Secondary */
+  --bs-light: #f8f9fa;  /* Standard Light */
+  --bs-dark: #212529;   /* Standard Dark */
+  --bs-body-color: #dee2e6; /* Lighter gray text for dark backgrounds */
+  --bs-body-bg: #121212;   /* Very Dark Background */
   --bs-white-rgb: 255, 255, 255;
+  --font-primary: 'Merriweather Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  --font-headings: 'Merriweather', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 }
 
+/* --- Global Styles --- */
 body {
-  font-family: 'Merriweather Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  font-family: var(--font-primary);
   background-color: var(--bs-body-bg);
   color: var(--bs-body-color);
-  scroll-behavior: smooth; /* Ensure smooth scroll works nicely */
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased; /* Smoother fonts */
+  -moz-osx-font-smoothing: grayscale;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  /* Optionally use a serif font for headings for contrast */
-  font-family: 'Merriweather', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-  color: #fff;
+  font-family: var(--font-headings);
+  color: #fff; /* Default heading color */
+  font-weight: 700; /* Bold headings */
 }
 
 p {
-  line-height: 1.6;
+  line-height: 1.65; /* Improved readability */
+  color: var(--bs-body-color);
 }
 
+a {
+  color: var(--bs-primary);
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+}
+a:hover {
+  color: #00e0b5; /* Lighter shade of primary on hover */
+}
+
+/* Utility Text Colors */
 .text-white-50 { color: rgba(var(--bs-white-rgb), 0.5) !important; }
 .text-white-75 { color: rgba(var(--bs-white-rgb), 0.75) !important; }
 
-/* --- Navigation --- */
+/* --- Page Content Offset for Fixed Nav --- */
+.page-content {
+  /* Estimate initial navbar height + buffer */
+  padding-top: calc(4.5rem + 20px);
+}
+/* Adjust if navbar shrinks */
+@media (min-width: 992px) {
+    #mainNav.navbar-scrolled + .page-content {
+        /* Estimate scrolled navbar height + buffer */
+        padding-top: calc(3.5rem + 20px);
+    }
+}
+
+
+/* --- Navigation Bar --- */
 #mainNav {
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
   background-color: var(--bs-dark); /* Start dark */
-  transition: background-color 0.2s ease-in-out;
+  transition: background-color 0.3s ease-in-out, padding-top 0.3s ease-in-out, padding-bottom 0.3s ease-in-out;
   padding-top: 1rem;
   padding-bottom: 1rem;
 }
 
 #mainNav .navbar-brand {
-  font-family: 'Merriweather', serif;
+  font-family: var(--font-headings);
   font-weight: bold;
-  color: var(--bs-primary); /* Use accent color */
+  color: var(--bs-primary);
+  font-size: 1.35rem;
+}
+#mainNav .navbar-brand:hover {
+  color: #00e0b5;
 }
 
 #mainNav .navbar-nav .nav-item .nav-link {
   color: rgba(var(--bs-white-rgb), 0.7);
   padding: 0.75rem 1rem;
   font-weight: bold;
+  font-size: 0.9rem;
+  letter-spacing: 0.05em;
   transition: color 0.2s ease;
 }
 
@@ -58,27 +95,38 @@ p {
   color: var(--bs-primary); /* Accent color on hover/active */
 }
 
-/* Shrink Navbar on Scroll */
+/* Scrolled State */
 #mainNav.navbar-scrolled {
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
-  background-color: rgba(33, 37, 41, 0.9); /* Slightly transparent dark */
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+  background-color: rgba(33, 37, 41, 0.95); /* Slightly transparent dark */
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+/* Apply backdrop filter if supported for a frosted glass effect */
+@supports ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
+    #mainNav.navbar-scrolled {
+        background-color: rgba(33, 37, 41, 0.85);
+        -webkit-backdrop-filter: blur(10px);
+        backdrop-filter: blur(10px);
+    }
 }
 
 
-/* --- Hero Section --- */
+/* --- Hero Section (index.html) --- */
 header.hero-section {
   position: relative;
-  padding-top: 8rem; /* Adjust based on navbar height */
+  padding-top: 8rem;
   padding-bottom: 8rem;
-  height: 100vh;
-  min-height: 40rem;
-  background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80'); /* Stunning placeholder */
-  background-position: center;
+  height: 100vh; /* Full viewport height */
+  min-height: 40rem; /* Minimum height */
+  background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80'); /* Placeholder */
+  background-position: center center;
   background-repeat: no-repeat;
-  background-attachment: scroll; /* Or 'fixed' for parallax effect */
+  background-attachment: fixed; /* Parallax-like effect */
   background-size: cover;
+  display: flex; /* Use flex for vertical alignment */
+  align-items: center; /* Center content vertically */
+  justify-content: center; /* Center content horizontally */
 }
 
 .hero-overlay {
@@ -87,12 +135,13 @@ header.hero-section {
     left: 0;
     height: 100%;
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.4); /* Dark overlay */
+    background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.6)); /* Gradient overlay */
 }
 
 header.hero-section h1 {
-    font-size: 3rem; /* Adjust as needed */
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+    font-size: 3rem;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.6);
+    color: #fff;
 }
 @media (min-width: 992px) {
     header.hero-section h1 {
@@ -102,28 +151,66 @@ header.hero-section h1 {
 
 .divider {
     height: 0.2rem;
-    max-width: 5rem; /* Short divider */
-    margin-left: auto;
-    margin-right: auto;
+    width: 5rem; /* Fixed width */
+    margin: 1.5rem auto; /* Centered with margin */
     background-color: var(--bs-primary); /* Accent color */
     opacity: 1;
     border: 0;
 }
 
 
-/* --- Gallery Section --- */
-#gallery .container-fluid {
-    max-width: 1920px; /* Allow wider gallery */
+/* --- Gallery Section (gallery.html) --- */
+#portfolio-gallery h2 {
+    margin-bottom: 1rem !important; /* Override default BS margin */
+}
+
+/* Filter Buttons */
+#gallery-filters {
+    padding: 1rem 0;
+}
+#gallery-filters .filter-button {
+    margin: 0 5px 10px;
+    border-radius: 50rem;
+    padding: 0.4rem 1.1rem;
+    font-size: 0.9rem;
+    border-width: 1px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    letter-spacing: 0.03em;
+}
+
+#gallery-filters .filter-button.active-filter,
+#gallery-filters .filter-button:hover {
+    background-color: var(--bs-primary);
+    border-color: var(--bs-primary);
+    color: var(--bs-dark); /* Dark text on active */
+}
+#gallery-filters .filter-button:not(.active-filter):not(:hover) {
+     background-color: transparent;
+     border-color: rgba(var(--bs-white-rgb), 0.4);
+     color: rgba(var(--bs-white-rgb), 0.7);
+}
+
+/* Portfolio Items Grid */
+.portfolio-container {
+    /* Row uses g-0, so items touch */
+}
+.portfolio-item {
+    /* Base class for items targeted by JS */
 }
 
 .portfolio-box {
     position: relative;
-    display: block; /* Takes full width of its col */
-    overflow: hidden; /* Crucial for zoom effect */
+    display: block;
+    overflow: hidden;
+    cursor: pointer; /* Indicate clickable */
 }
 
 .portfolio-box img {
-    transition: transform 0.4s ease; /* Smooth zoom */
+    transition: transform 0.5s ease; /* Slightly longer zoom */
+    width: 100%;
+    height: auto;
+    display: block; /* Remove extra space below image */
 }
 
 .portfolio-box .portfolio-box-caption {
@@ -136,143 +223,167 @@ header.hero-section h1 {
     position: absolute;
     bottom: 0;
     text-align: center;
-    opacity: 0; /* Hidden by default */
+    opacity: 0;
     color: #fff;
-    background: rgba(var(--bs-primary-rgb), 0.75); /* Use primary color with transparency */
-    transition: opacity 0.3s ease;
-    padding: 1rem;
+    background: rgba(var(--bs-primary-rgb), 0.8); /* Slightly darker overlay */
+    transition: opacity 0.35s ease;
+    padding: 1.5rem; /* More padding */
 }
 
 .portfolio-box:hover img {
-     transform: scale(1.1); /* Zoom in image */
+     transform: scale(1.08); /* Slightly more zoom */
 }
 
 .portfolio-box:hover .portfolio-box-caption {
-    opacity: 1; /* Show caption on hover */
+    opacity: 1;
 }
 
 .portfolio-box .portfolio-box-caption .project-category {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     font-weight: 600;
     text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.25rem;
 }
 
 .portfolio-box .portfolio-box-caption .project-name {
-    font-size: 1.1rem;
-    font-family: 'Merriweather', serif;
+    font-size: 1.2rem;
+    font-family: var(--font-headings);
+    font-weight: 700;
 }
 
-/* --- About Section --- */
+/* Hiding items for filtering */
+.portfolio-container .portfolio-item.hide-item {
+   display: none;
+}
+
+
+/* --- About Section (index.html) --- */
 #about {
    background-color: var(--bs-light);
    color: var(--bs-dark); /* Dark text on light background */
+   padding: 6rem 0; /* More vertical padding */
 }
 #about h2, #about p, #about .lead {
-    color: var(--bs-dark);
+    color: var(--bs-dark); /* Ensure text color overrides */
 }
-#about .btn-dark { /* Ensure button contrast */
+#about .lead {
+    font-size: 1.15rem;
+    font-weight: 400;
+}
+#about img.rounded-circle {
+    border: 6px solid #fff; /* Thicker border */
+    box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.15);
+}
+#about .btn-dark {
     background-color: var(--bs-dark);
     color: #fff;
+    border-radius: 50rem; /* Match other buttons */
 }
 #about .btn-dark:hover {
      background-color: #495057;
+     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 #about .btn-outline-dark {
     border-color: var(--bs-dark);
     color: var(--bs-dark);
+     border-radius: 50rem; /* Match other buttons */
+     border-width: 2px;
 }
 #about .btn-outline-dark:hover {
     background-color: var(--bs-dark);
     color: #fff;
+     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 
-/* --- Blog Section --- */
+
+/* --- Blog Section (index.html) --- */
+#blog {
+    padding: 6rem 0;
+}
 .blog-card {
-    background-color: #2a2a2a; /* Slightly lighter than body bg */
+    background-color: #262626; /* Slightly distinct dark card */
     border-radius: 8px;
     overflow: hidden;
-    border: 1px solid #333;
+    border: 1px solid #383838;
     height: 100%;
     display: flex;
     flex-direction: column;
-    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    transition: transform 0.25s ease-in-out, box-shadow 0.25s ease-in-out;
 }
 .blog-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 0.5rem 1rem rgba(0, 184, 148, 0.3);
+    transform: translateY(-6px);
+    box-shadow: 0 0.75rem 1.5rem rgba(0, 184, 148, 0.2); /* Softer green shadow */
 }
 
 .blog-card .card-img-top {
-    height: 200px; /* Fixed height for consistency */
+    height: 220px; /* Slightly taller image */
     object-fit: cover;
 }
 .blog-card .card-body {
-    flex-grow: 1; /* Allows body to fill space */
-    padding: 1.5rem;
+    flex-grow: 1;
+    padding: 1.75rem; /* More padding */
+}
+.blog-card .card-title a {
+    color: #fff; /* Ensure title link is white */
+    font-weight: 700;
+    font-size: 1.2rem;
 }
 .blog-card .card-title a:hover {
     color: var(--bs-primary) !important;
 }
+.blog-card .card-text {
+    font-size: 0.95rem;
+}
 .blog-card .btn-outline-primary {
     color: var(--bs-primary);
     border-color: var(--bs-primary);
+    border-radius: 50rem; /* Pill shape */
+    font-weight: 600;
+    padding: 0.4rem 1rem;
 }
 .blog-card .btn-outline-primary:hover {
     background-color: var(--bs-primary);
-    color: #fff;
-}
-
-/* --- Contact Section --- */
-#contact {
-   background-color: var(--bs-secondary); /* Use secondary color */
-}
-#contact .form-control {
-    background-color: rgba(var(--bs-white-rgb), 0.1);
-    border-color: rgba(var(--bs-white-rgb), 0.2);
-    color: #fff;
-}
-#contact .form-control:focus {
-    background-color: rgba(var(--bs-white-rgb), 0.15);
-    border-color: var(--bs-primary);
-    box-shadow: 0 0 0 0.25rem rgba(var(--bs-primary-rgb), 0.5);
-    color: #fff;
-}
-#contact .form-floating > label {
-    color: rgba(var(--bs-white-rgb), 0.5);
-}
-#contact .form-floating > .form-control:focus ~ label,
-#contact .form-floating > .form-control:not(:placeholder-shown) ~ label {
-   color: rgba(var(--bs-white-rgb), 0.7);
+    color: var(--bs-dark);
 }
 
 
-/* --- Buttons --- */
+/* --- Buttons (General) --- */
 .btn {
-  padding: 0.75rem 1.5rem;
+  padding: 0.8rem 1.75rem; /* Adjusted padding */
   border-radius: 50rem; /* Pill shape */
   font-weight: bold;
-  font-family: 'Merriweather Sans', sans-serif;
+  font-family: var(--font-primary);
   transition: all 0.2s ease-in-out;
   border: none;
   letter-spacing: 0.05em;
+  font-size: 0.9rem;
+  cursor: pointer;
 }
 .btn:active {
-    transform: scale(0.98);
+    transform: scale(0.97); /* Slightly more pronounced press */
 }
 
+/* Button Sizes */
 .btn-xl {
-    padding: 1rem 2rem;
-    font-size: 1rem;
+    padding: 1.1rem 2.2rem;
+    font-size: 1.1rem;
+}
+.btn-sm {
+    padding: 0.4rem 1rem;
+    font-size: 0.8rem;
 }
 
+/* Button Variants */
 .btn-primary {
   background-color: var(--bs-primary);
-  color: #fff;
+  color: var(--bs-dark); /* Dark text on primary bg for contrast */
 }
 .btn-primary:hover {
   background-color: #00a084; /* Slightly darker */
   transform: translateY(-2px);
-   box-shadow: 0 4px 8px rgba(var(--bs-primary-rgb), 0.4);
+  box-shadow: 0 5px 10px rgba(var(--bs-primary-rgb), 0.3);
+  color: var(--bs-dark);
 }
 
 .btn-secondary {
@@ -283,45 +394,105 @@ header.hero-section h1 {
   background-color: #555;
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(0,0,0, 0.3);
+  color: #fff;
 }
 
 .btn-outline-light {
-    border: 2px solid rgba(var(--bs-white-rgb), 0.7);
-    color: rgba(var(--bs-white-rgb), 0.7);
+    border: 2px solid rgba(var(--bs-white-rgb), 0.6);
+    color: rgba(var(--bs-white-rgb), 0.8);
+    background-color: transparent;
 }
 .btn-outline-light:hover {
     border-color: #fff;
-    color: #fff;
-    background-color: rgba(var(--bs-white-rgb), 0.1);
+    color: var(--bs-dark); /* Dark text on hover */
+    background-color: #fff; /* White background */
+    box-shadow: 0 3px 6px rgba(255,255,255,0.2);
+}
+/* Ensure btn-sm Outline Light also applies */
+.btn-sm.btn-outline-light {
+     border-width: 1px;
 }
 
 
 /* --- Footer --- */
 footer {
-    background-color: var(--bs-dark);
+    padding: 4rem 0; /* Consistent padding */
+    background-color: #0c0c0c; /* Even darker footer */
+    color: rgba(var(--bs-white-rgb), 0.4); /* Dimmer text */
 }
-footer a:hover {
-    color: var(--bs-primary) !important;
+footer .fab { /* Font Awesome icons */
+    font-size: 1.5rem;
+    transition: color 0.2s ease-in-out;
+}
+footer a {
+    color: rgba(var(--bs-white-rgb), 0.4); /* Match text */
+}
+footer a:hover, footer a:hover .fab {
+    color: var(--bs-primary) !important; /* Accent on hover */
+}
+footer p {
+    margin-bottom: 0.5rem;
+    color: inherit; /* Inherit dimmed color */
 }
 
-/* --- Utilities --- */
-.bg-dark { background-color: var(--bs-dark) !important; }
-.bg-secondary { background-color: var(--bs-secondary) !important; }
-.bg-light { background-color: var(--bs-light) !important; }
 
 /* --- Responsive adjustments --- */
 @media (max-width: 991.98px) {
+    /* Adjust Hero padding and height for tablets/mobile */
     header.hero-section {
         padding-top: 6rem;
         padding-bottom: 6rem;
         min-height: auto;
         height: auto; /* Let content define height */
+        background-attachment: scroll; /* Fixed attachment can be weird on mobile */
     }
-    #mainNav { /* Ensure navbar is always dark on mobile */
-      background-color: var(--bs-dark);
+    header.hero-section h1 {
+        font-size: 2.5rem;
     }
+
+    /* Ensure navbar doesn't shrink padding on mobile */
     #mainNav.navbar-scrolled {
         padding-top: 1rem;
         padding-bottom: 1rem;
     }
+    /* Reset page content padding adjustment */
+    .page-content {
+        padding-top: calc(4.5rem + 20px); /* Match initial padding */
+    }
+     #mainNav.navbar-scrolled + .page-content {
+         padding-top: calc(4.5rem + 20px);
+     }
+
+     /* Stack About section content */
+     #about .row {
+         text-align: center;
+     }
+     #about .col-md-8 {
+         margin-top: 2rem;
+     }
+}
+
+@media (max-width: 767.98px) {
+     h1 { font-size: 2.2rem; }
+     h2 { font-size: 1.8rem; }
+
+     #about, #blog {
+         padding: 4rem 0; /* Reduce padding */
+     }
+
+     .btn {
+         padding: 0.7rem 1.5rem;
+         font-size: 0.85rem;
+     }
+     .btn-xl {
+         padding: 0.9rem 1.8rem;
+         font-size: 1rem;
+     }
+
+     .portfolio-box .portfolio-box-caption {
+         padding: 1rem;
+     }
+      .portfolio-box .portfolio-box-caption .project-name {
+         font-size: 1rem;
+     }
 }
