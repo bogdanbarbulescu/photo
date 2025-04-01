@@ -1,90 +1,260 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nature and Landscape Photography Portfolio</title>
-    <meta name="description" content="A portfolio showcasing nature and landscape photography.">
-    <meta name="keywords" content="nature, landscape, photography, portfolio">
+    <title>Photographer Portfolio</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-KyZXEAg3QhqLMpG8r+Knujsl7/1L_dstPt3HV5HzF6Gvk/e3wDWydh66wYB4J0y" crossorigin="anonymous">
-    <script src="script.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RMw2I5Dk+e1rFVCS1htn5110XmLd8m2vRdE7Jx"
-        crossorigin="anonymous"></script>
+    <!-- Font Awesome (Optional, for icons) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
-
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-body-tertiary">
-        <div class="navbar-brand">BOGDAN BARBULESCU PHOTOGRAPHY</div>
-        <ul class="navbar-menu">
-            <li><a href="#">HOME</a></li>
-            <li><a href="#gallery">GALLERY</a></li>
-            <li><a href="#">BLOG</a></li>
-            <li><a href="#">ABOUT ME</a></li>
-        </ul>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">PhotoFolio</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About Me</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#gallery">Gallery</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#blog">Blog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </nav>
 
-    <header>
-        <div class="p-5 text-center bg-image rounded-3">
-            <h1>PORTOFOLIO</h1>
-        </div>
-    </header>
-
+    <!-- Main Content -->
     <main>
-        <section id="gallery">
-            <div class="gallery-container">
-                <div class="card">
-                    <img src="https://images.unsplash.com/photo-1710936721263-e78ffbca7785?q=80&w=1780&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                        alt="Mountain View">
-                </div>
-                <div class="card">
-                    <img src="https://images.unsplash.com/photo-1712023105220-cf7ff6bfb2f9?q=80&w=1975&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                        alt="Lake at Sunset">
-                </div>
-                <div class="card">
-                    <img src="https://images.unsplash.com/photo-1710170600927-7a39aa2c5890?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                        alt="Forest Path">
-                </div>
-                <div class="card">
-                    <img src="https://plus.unsplash.com/premium_photo-1675826774815-35b8a48ddc2c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                        alt="Snowy Mountains">
-                </div>
-                <div class="card">
-                    <img src="https://images.unsplash.com/photo-1711861982569-565113102217?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                        alt="Autumn Leaves">
-                </div>
-                <div class="card">
-                    <img src="https://images.unsplash.com/photo-1712079679970-bb45e9ef5b2a?q=80&w=2054&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                        alt="Coastal Cliffs">
-                </div>
+        <!-- Home Section (Optional Hero) -->
+        <section id="home" class="text-center py-5 bg-dark text-light">
+            <div class="container">
+                <h1>Welcome to My Portfolio</h1>
+                <p class="lead">Capturing moments, creating memories.</p>
+                 <a href="#gallery" class="btn btn-primary mt-3">View My Work</a>
             </div>
         </section>
-    </main>
 
-    <div id="imageModal" class="modal">
-        <span class="close">&times;</span>
-        <img class="modal-content" id="modalImage">
-        <div id="caption"></div>
-    </div>
 
-    <footer class="footer">
-        <div class="container">
-            <div class="row">
-                <div class="footer-col">
-                    <h4>Follow me</h4>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        <!-- About Me Section -->
+        <section id="about" class="py-5">
+            <div class="container">
+                <h2 class="text-center mb-4">About Me</h2>
+                <div class="row align-items-center">
+                    <div class="col-md-4 text-center mb-4 mb-md-0">
+                         <!-- Placeholder for profile picture -->
+                         <img src="https://via.placeholder.com/300x300.png?text=Your+Photo" alt="Photographer Name" class="img-fluid rounded-circle" style="max-width: 250px; border: 3px solid #333;">
+                    </div>
+                    <div class="col-md-8">
+                        <p>Hello! I'm [Your Name], a passionate photographer based in [Your Location]. My journey into photography began [Number] years ago, driven by a desire to capture the beauty and emotion I see in the world around me.</p>
+                        <p>I specialize in [Your Specializations, e.g., portrait, landscape, wedding, event photography], striving to create images that are not only visually stunning but also tell a compelling story. I believe that every picture should evoke feeling and preserve a moment in time.</p>
+                        <p>Whether it's the intimate connection between a newly married couple, the majestic grandeur of a landscape, or the candid joy of a family gathering, I aim to capture the essence of the subject. Let's create something beautiful together!</p>
+                        <!-- Optional: Add social media links or more details -->
+                         <div class="mt-3">
+                            <a href="#" class="btn btn-outline-light me-2"><i class="fab fa-instagram"></i> Instagram</a>
+                            <a href="#" class="btn btn-outline-light"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                         </div>
                     </div>
                 </div>
             </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section id="gallery" class="py-5 bg-dark">
+            <div class="container">
+                <h2 class="text-center mb-4 text-light">Gallery</h2>
+                <div class="row g-4">
+                    <!-- Gallery Item 1 -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="portfolio-card"> <!-- Renamed from quiz-card conceptually -->
+                             <div class="portfolio-image"> <!-- Renamed from quiz-image conceptually -->
+                                <img src="https://via.placeholder.com/400x300.png?text=Landscape+1" alt="Gallery Image 1">
+                            </div>
+                            <div class="portfolio-content"> <!-- Renamed from quiz-content conceptually -->
+                                <h5>Mountain View</h5>
+                                <p class="text-muted small">A majestic mountain range at dawn.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Gallery Item 2 -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="portfolio-card">
+                             <div class="portfolio-image">
+                                <img src="https://via.placeholder.com/400x300.png?text=Portrait+1" alt="Gallery Image 2">
+                            </div>
+                            <div class="portfolio-content">
+                                <h5>Urban Portrait</h5>
+                                <p class="text-muted small">Capturing style in the city streets.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Gallery Item 3 -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="portfolio-card">
+                             <div class="portfolio-image">
+                                <img src="https://via.placeholder.com/400x300.png?text=Wedding+Shot" alt="Gallery Image 3">
+                            </div>
+                            <div class="portfolio-content">
+                                <h5>Wedding Bliss</h5>
+                                <p class="text-muted small">A tender moment captured forever.</p>
+                            </div>
+                        </div>
+                    </div>
+                     <!-- Add more gallery items as needed -->
+                     <div class="col-md-6 col-lg-4">
+                        <div class="portfolio-card">
+                             <div class="portfolio-image">
+                                <img src="https://via.placeholder.com/400x300.png?text=Nature+Detail" alt="Gallery Image 4">
+                            </div>
+                            <div class="portfolio-content">
+                                <h5>Macro Wonder</h5>
+                                <p class="text-muted small">The intricate details of nature.</p>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="col-md-6 col-lg-4">
+                        <div class="portfolio-card">
+                             <div class="portfolio-image">
+                                <img src="https://via.placeholder.com/400x300.png?text=Event+Photo" alt="Gallery Image 5">
+                            </div>
+                            <div class="portfolio-content">
+                                <h5>Event Energy</h5>
+                                <p class="text-muted small">The vibrant atmosphere of a live event.</p>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="col-md-6 col-lg-4">
+                        <div class="portfolio-card">
+                             <div class="portfolio-image">
+                                <img src="https://via.placeholder.com/400x300.png?text=Seascape" alt="Gallery Image 6">
+                            </div>
+                            <div class="portfolio-content">
+                                <h5>Coastal Serenity</h5>
+                                <p class="text-muted small">Calm waters reflecting the sunset.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Blog Section -->
+        <section id="blog" class="py-5">
+            <div class="container">
+                <h2 class="text-center mb-4">From The Blog</h2>
+                <div class="row g-4">
+                    <!-- Blog Post 1 -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="portfolio-card"> <!-- Reusing card style -->
+                            <div class="portfolio-image"> <!-- Optional: Featured Image -->
+                                <img src="https://via.placeholder.com/400x250.png?text=Blog+Post+1" alt="Blog Post 1 Image">
+                            </div>
+                            <div class="portfolio-content text-start"> <!-- Align text left for blog posts -->
+                                <h5>Choosing the Right Lens</h5>
+                                <p class="text-muted small">Published: Nov 10, 2023</p>
+                                <p>A quick guide to understanding focal lengths and aperture for beginners...</p>
+                                <a href="#" class="btn btn-sm btn-outline-light">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Blog Post 2 -->
+                     <div class="col-md-6 col-lg-4">
+                        <div class="portfolio-card">
+                             <div class="portfolio-image">
+                                <img src="https://via.placeholder.com/400x250.png?text=Blog+Post+2" alt="Blog Post 2 Image">
+                            </div>
+                            <div class="portfolio-content text-start">
+                                <h5>Mastering Golden Hour</h5>
+                                <p class="text-muted small">Published: Oct 25, 2023</p>
+                                <p>Tips and tricks for capturing stunning photos during the magical golden hour...</p>
+                                <a href="#" class="btn btn-sm btn-outline-light">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Blog Post 3 -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="portfolio-card">
+                            <div class="portfolio-image">
+                                <img src="https://via.placeholder.com/400x250.png?text=Blog+Post+3" alt="Blog Post 3 Image">
+                            </div>
+                            <div class="portfolio-content text-start">
+                                <h5>Post-Processing Essentials</h5>
+                                <p class="text-muted small">Published: Oct 05, 2023</p>
+                                <p>An overview of basic editing techniques to enhance your photographs...</p>
+                                <a href="#" class="btn btn-sm btn-outline-light">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Add more blog posts as needed -->
+                </div>
+                 <div class="text-center mt-4">
+                    <a href="#" class="btn btn-primary">View All Blog Posts</a>
+                 </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-5 bg-dark">
+            <div class="container">
+                <h2 class="text-center mb-4 text-light">Get In Touch</h2>
+                <div class="row justify-content-center">
+                    <div class="col-md-8">
+                        <div id="contact-form-result" class="mb-3"></div> <!-- For AJAX feedback -->
+                        <form id="contact-form">
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Name</label>
+                                <input type="text" class="form-control bg-dark text-light border-secondary" id="name" name="name" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email address</label>
+                                <input type="email" class="form-control bg-dark text-light border-secondary" id="email" name="email" required>
+                            </div>
+                             <div class="mb-3">
+                                <label for="subject" class="form-label">Subject</label>
+                                <input type="text" class="form-control bg-dark text-light border-secondary" id="subject" name="subject">
+                            </div>
+                            <div class="mb-3">
+                                <label for="message" class="form-label">Message</label>
+                                <textarea class="form-control bg-dark text-light border-secondary" id="message" name="message" rows="5" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-success w-100">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-4 bg-black text-center text-muted">
+        <div class="container">
+            <p class="mb-0">© 2023 [Your Name] Photography. All Rights Reserved.</p>
+            <!-- Optional: Add social links or back-to-top button -->
         </div>
     </footer>
-</body>
 
+    <!-- Bootstrap JS Bundle (includes Popper) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <!-- Custom JS -->
+    <script src="script.js"></script>
+</body>
 </html>
