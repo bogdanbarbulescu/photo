@@ -1,100 +1,212 @@
-/* Body styling */
+/* style.css (Adapted for Portfolio) */
+
 body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #222831, #31363F);
-    color: #EEEEEE;
+  font-family: Arial, sans-serif;
+  background-color: #121212; /* Dark background */
+  color: #fff; /* Light text */
 }
 
-/* Main content container */
-#content {
-    max-width: 800px;
-    margin: 100px auto;
-    padding: 20px;
-    background: rgba(49, 54, 63, 0.9);
-    border-radius: 10px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+.container {
+  max-width: 1140px; /* Slightly wider container for portfolio */
 }
 
-/* Header and titles */
-h1, h2, h3 {
-    font-weight: 700;
-    text-align: center;
-    text-transform: uppercase;
-    color: #76ABAE;
+h1, h2, h3, h4, h5, h6, p {
+  color: #fff;
+  /* Ensure text is light */
 }
 
-h1 {
-    font-size: 2.5rem;
+section {
+    padding: 4rem 0; /* Add padding between sections */
 }
 
-h2 {
-    font-size: 2rem;
-    margin-bottom: 10px;
+/* Card styles for Gallery and Blog */
+.portfolio-card { /* Replaces .quiz-card */
+  background-color: #222;
+  /* Darker card background */
+  border: 1px solid #333;
+  /* Subtle border */
+  border-radius: 8px;
+  /* Rounded corners */
+  padding: 0; /* Remove padding here, add to content */
+  margin-bottom: 1.5rem; /* Consistent margin */
+  display: flex;
+  flex-direction: column;
+  /* Stack elements vertically */
+  align-items: center;
+  /* Center items horizontally */
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.2s ease, box-shadow 0.3s ease, transform 0.2s ease;
+  overflow: hidden; /* Ensure image corners are clipped */
+  height: 100%; /* Make cards in a row equal height */
 }
 
-/* Links */
-a {
-    color: #76ABAE;
-    text-decoration: none;
+.portfolio-card:hover {
+  background-color: #333;
+  box-shadow: 0 0 15px 3px rgba(0, 184, 148, 0.6); /* Enhanced Green glow */
+  transform: translateY(-5px); /* Slight lift effect */
+}
+
+.portfolio-image {
+  width: 100%;
+  height: 200px; /* Fixed height for gallery/blog images */
+  overflow: hidden;
+  /* Clip image */
+}
+
+.portfolio-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Cover the area, maintaining aspect ratio */
+  transition: transform 0.3s ease; /* Zoom effect on hover */
+}
+
+.portfolio-card:hover .portfolio-image img {
+    transform: scale(1.05); /* Slight zoom on image hover */
+}
+
+.portfolio-content {
+  padding: 1.5rem; /* Add padding to content area */
+  flex-grow: 1;
+  /* Allow content to fill remaining space */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Vertically center text */
+  width: 100%; /* Ensure content takes full width */
+}
+
+.portfolio-content h5 { /* Changed from h2 */
+  font-size: 1.1rem; /* Adjusted size */
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: #fff;
+  transition: color 0.2s ease;
+}
+
+.portfolio-card:hover .portfolio-content h5 {
+  color: #00b894;
+  /* Green on hover */
+}
+
+.portfolio-content p {
+  font-size: 0.9rem; /* Adjusted size */
+  color: #ccc;
+  margin-bottom: 0.5rem;
+}
+
+/* Specific adjustments for blog cards */
+.portfolio-card .portfolio-content.text-start {
+    text-align: left; /* Align blog content left */
+    justify-content: flex-start; /* Align blog content top */
+}
+.portfolio-card .portfolio-content.text-start p {
+    margin-bottom: 1rem;
+}
+
+/* About Me section image */
+#about img {
+    border: 4px solid #333;
+}
+
+
+/* Contact Form specific styles */
+#contact .form-control {
+    background-color: #333; /* Slightly lighter input background */
+    color: #fff;
+    border: 1px solid #555;
+}
+#contact .form-control:focus {
+    background-color: #444;
+    color: #fff;
+    border-color: #00b894; /* Highlight focus with accent color */
+    box-shadow: 0 0 0 0.2rem rgba(0, 184, 148, 0.25); /* Bootstrap-like focus shadow */
+}
+#contact label {
+    color: #ccc;
+}
+
+/* Form feedback messages */
+.form-success {
+    color: #28a745;
+    font-weight: bold;
+}
+.form-error {
+    color: #dc3545;
     font-weight: bold;
 }
 
-a:hover {
-    text-decoration: underline;
+/* Navbar styling */
+.navbar {
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+.nav-link {
+    transition: color 0.2s ease;
+}
+.nav-link:hover, .nav-link.active {
+    color: #00b894 !important; /* Accent color for active/hover links */
+}
+
+/* Consistent button styling (From provided CSS) */
+.btn {
+  padding: 0.6rem 1.2rem; /* Slightly larger padding */
+  border-radius: 4px;
+  font-weight: bold;
+  transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease, transform 0.1s ease;
+  border: none; /* Remove default borders if any */
+}
+.btn:active {
+    transform: scale(0.98); /* Button press effect */
+}
+
+.btn-outline-light {
+    border-color: #555;
+    color: #ccc;
+}
+.btn-outline-light:hover {
+    border-color: #00b894;
+    background-color: rgba(0, 184, 148, 0.1);
+    color: #00b894;
+     box-shadow: 0 0 5px rgba(0, 184, 148, 0.5); /* Subtle glow */
+}
+
+/* Keep the primary/success styles, adjust others if needed */
+.btn-primary {
+  background-color: #007bff;
+  /* border-color: #007bff; */ /* No border needed */
+  color: #fff;
+}
+.btn-primary:hover {
+  background-color: #0069d9;
+  /* border-color: #0062cc; */
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.6);  /* Enhanced glow */
+}
+
+.btn-success {
+  background-color: #28a745;
+  /* border-color: #28a745; */
+  color: #fff;
+}
+.btn-success:hover {
+  background-color: #218838;
+  /* border-color: #1e7e34; */
+  box-shadow: 0 0 8px rgba(40, 167, 69, 0.6); /* Enhanced glow */
 }
 
 /* Footer */
 footer {
-    text-align: center;
-    font-size: 0.9rem;
-    margin-top: 20px;
-    color: #EEEEEE;
-    opacity: 0.8;
+    background-color: #000; /* Even darker footer */
 }
 
-/* Buttons */
-.button {
-    display: inline-block;
-    padding: 10px 20px;
-    margin: 10px 5px;
-    background: #76ABAE;
-    color: #222831;
-    text-transform: uppercase;
-    border: none;
-    border-radius: 5px;
-    text-align: center;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
 
-.button:hover {
-    background: #EEEEEE;
-    color: #222831;
-}
-
-/* Images */
-img {
-    width: 100%;
-    border-radius: 10px;
-    margin-bottom: 20px;
-}
-
-/* Responsive Design */
+/* Responsive adjustments */
 @media (max-width: 768px) {
-    h1 {
-        font-size: 2rem;
-    }
-    h2 {
-        font-size: 1.5rem;
-    }
-    #content {
-        margin: 50px auto;
-        padding: 15px;
-    }
-    .button {
-        width: 100%;
-        margin: 10px 0;
-    }
+  h1 { font-size: 2.5rem; }
+  h2 { font-size: 2rem; }
+  section { padding: 3rem 0; }
+  .portfolio-image { height: 180px; } /* Adjust image height */
+}
+@media (max-width: 576px) {
+   .portfolio-image { height: 150px; } /* Adjust image height further */
+   .navbar-brand { font-size: 1.2rem;}
+   .btn { padding: 0.5rem 1rem; }
 }
