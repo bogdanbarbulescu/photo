@@ -1,0 +1,60 @@
+/* style.css (Landscape Photography Update) */
+
+/* ... (Keep all previous styles from the last update *except* contact styles) ... */
+
+/* --- Remove Contact Section Styles --- */
+/* Delete all rules that started with #contact, for example: */
+/* #contact { ... } */
+/* #contact .form-control { ... } */
+/* #contact .form-control:focus { ... } */
+/* #contact .form-floating > label { ... } */
+/* #contact .form-floating > .form-control:focus ~ label, etc { ... } */
+/* .form-success, .form-error { ... } (If only used for contact form) */
+
+
+/* --- Gallery Filter Buttons --- */
+#gallery-filters .filter-button {
+    margin: 0 5px 10px; /* Spacing around buttons */
+    border-radius: 50rem; /* Pill shape */
+    padding: 0.4rem 1rem;
+    font-size: 0.9rem;
+    border-width: 1px;
+    transition: all 0.2s ease;
+}
+
+#gallery-filters .filter-button.active-filter,
+#gallery-filters .filter-button:hover {
+    background-color: var(--bs-primary); /* Use accent color */
+    border-color: var(--bs-primary);
+    color: #fff; /* White text on active/hover */
+}
+#gallery-filters .filter-button:not(.active-filter):not(:hover) {
+     /* Explicitly define non-active state if needed */
+     background-color: transparent;
+     border-color: rgba(var(--bs-white-rgb), 0.5);
+     color: rgba(var(--bs-white-rgb), 0.7);
+}
+
+
+/* --- Portfolio Item Styling (for filtering) --- */
+.portfolio-container .portfolio-item {
+    transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out; /* Smooth filtering */
+    /* display: block; Ensure items are block for layout */
+}
+
+/* Add a class via JS to hide items - simpler than complex transitions */
+.portfolio-container .portfolio-item.hide-item {
+   display: none;
+}
+
+/* Adjust main content padding if navbar height changes */
+.page-content {
+  padding-top: calc(4.5rem + 20px); /* Adjust based on your initial navbar height + buffer */
+}
+@media (min-width: 992px) {
+    #mainNav.navbar-scrolled .page-content {
+        padding-top: calc(3.5rem + 20px); /* Adjust based on scrolled navbar height + buffer */
+    }
+}
+
+/* ... (Keep all other styles like body, nav, hero, gallery items, blog, footer, buttons, etc.) ... */
