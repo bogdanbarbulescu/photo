@@ -3,33 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Photographer Portfolio</title>
+    <title>[Your Name] - Landscape Photography</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="style.css">
     <!-- Font Awesome (Optional, for icons) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <!-- Navigation Bar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
         <div class="container">
-            <a class="navbar-brand" href="#">PhotoFolio</a>
+            <a class="navbar-brand" href="#page-top">[Your Name]</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#home">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#about">About Me</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="#gallery">Gallery</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#blog">Blog</a>
@@ -43,199 +40,189 @@
     </nav>
 
     <!-- Main Content -->
-    <main>
-        <!-- Home Section (Optional Hero) -->
-        <section id="home" class="text-center py-5 bg-dark text-light">
-            <div class="container">
-                <h1>Welcome to My Portfolio</h1>
-                <p class="lead">Capturing moments, creating memories.</p>
-                 <a href="#gallery" class="btn btn-primary mt-3">View My Work</a>
+    <main id="page-top">
+        <!-- Hero Section -->
+        <header class="hero-section">
+            <div class="hero-overlay"></div>
+            <div class="container h-100">
+                <div class="row h-100 align-items-center justify-content-center text-center">
+                    <div class="col-lg-10 align-self-end">
+                        <h1 class="text-white font-weight-bold">[Your Name]</h1>
+                        <hr class="divider my-4 bg-light" />
+                    </div>
+                    <div class="col-lg-8 align-self-baseline">
+                        <p class="text-white-75 font-weight-light mb-5">Evocative Landscapes | Capturing the Soul of Nature</p>
+                        <a class="btn btn-primary btn-xl" href="#gallery">View Portfolio</a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Gallery Section -->
+        <section id="gallery" class="py-5 bg-dark">
+             <div class="container">
+                <h2 class="text-center mb-5 text-light">Gallery</h2>
+                <div class="row g-0"> <!-- Use g-0 for no gutters/spacing between cols -->
+                    <!-- Gallery Item 1 -->
+                    <div class="col-lg-4 col-sm-6">
+                        <a class="portfolio-box" href="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" title="Alpine Lake">
+                            <img class="img-fluid" src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=60" alt="Alpine Lake" />
+                            <div class="portfolio-box-caption">
+                                <div class="project-category text-white-50">Mountains</div>
+                                <div class="project-name">Alpine Lake Reflection</div>
+                            </div>
+                        </a>
+                    </div>
+                    <!-- Gallery Item 2 -->
+                    <div class="col-lg-4 col-sm-6">
+                         <a class="portfolio-box" href="https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" title="Misty Forest">
+                            <img class="img-fluid" src="https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=60" alt="Misty Forest" />
+                            <div class="portfolio-box-caption">
+                                <div class="project-category text-white-50">Forests</div>
+                                <div class="project-name">Enchanted Woods</div>
+                            </div>
+                        </a>
+                    </div>
+                    <!-- Gallery Item 3 -->
+                    <div class="col-lg-4 col-sm-6">
+                        <a class="portfolio-box" href="https://images.unsplash.com/photo-1501854140801-50d01698950b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80" title="Rolling Hills">
+                            <img class="img-fluid" src="https://images.unsplash.com/photo-1501854140801-50d01698950b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=60" alt="Rolling Hills" />
+                            <div class="portfolio-box-caption">
+                                <div class="project-category text-white-50">Fields</div>
+                                <div class="project-name">Emerald Valley</div>
+                            </div>
+                        </a>
+                    </div>
+                    <!-- Gallery Item 4 -->
+                    <div class="col-lg-4 col-sm-6">
+                        <a class="portfolio-box" href="https://images.unsplash.com/photo-1473448912268-2022ce9509d8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80" title="Coastal Sunset">
+                            <img class="img-fluid" src="https://images.unsplash.com/photo-1473448912268-2022ce9509d8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=60" alt="Coastal Sunset" />
+                             <div class="portfolio-box-caption">
+                                <div class="project-category text-white-50">Coasts</div>
+                                <div class="project-name">Sunset Over the Waves</div>
+                            </div>
+                        </a>
+                    </div>
+                     <!-- Gallery Item 5 -->
+                    <div class="col-lg-4 col-sm-6">
+                        <a class="portfolio-box" href="https://images.unsplash.com/photo-1506260408121-e353d10b87c7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=928&q=80" title="Desert Dunes">
+                            <img class="img-fluid" src="https://images.unsplash.com/photo-1506260408121-e353d10b87c7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=60" alt="Desert Dunes" />
+                             <div class="portfolio-box-caption">
+                                <div class="project-category text-white-50">Deserts</div>
+                                <div class="project-name">Golden Sands</div>
+                            </div>
+                        </a>
+                    </div>
+                    <!-- Gallery Item 6 -->
+                     <div class="col-lg-4 col-sm-6">
+                        <a class="portfolio-box" href="https://images.unsplash.com/photo-1431794062232-2a99a5431c6a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" title="Waterfall">
+                            <img class="img-fluid" src="https://images.unsplash.com/photo-1431794062232-2a99a5431c6a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format=fit&crop&w=600&q=60" alt="Waterfall" />
+                            <div class="portfolio-box-caption p-3">
+                                <div class="project-category text-white-50">Waterfalls</div>
+                                <div class="project-name">Hidden Cascade</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
             </div>
         </section>
 
-
         <!-- About Me Section -->
-        <section id="about" class="py-5">
+        <section id="about" class="py-5 bg-light text-dark"> <!-- Change background for contrast -->
             <div class="container">
                 <h2 class="text-center mb-4">About Me</h2>
                 <div class="row align-items-center">
                     <div class="col-md-4 text-center mb-4 mb-md-0">
-                         <!-- Placeholder for profile picture -->
-                         <img src="https://via.placeholder.com/300x300.png?text=Your+Photo" alt="Photographer Name" class="img-fluid rounded-circle" style="max-width: 250px; border: 3px solid #333;">
+                         <!-- Placeholder for profile picture - maybe photographer in nature? -->
+                         <img src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580&q=80" alt="Photographer Name" class="img-fluid rounded-circle" style="max-width: 250px; border: 5px solid #fff; box-shadow: 0 0 15px rgba(0,0,0,0.2);">
                     </div>
                     <div class="col-md-8">
-                        <p>Hello! I'm [Your Name], a passionate photographer based in [Your Location]. My journey into photography began [Number] years ago, driven by a desire to capture the beauty and emotion I see in the world around me.</p>
-                        <p>I specialize in [Your Specializations, e.g., portrait, landscape, wedding, event photography], striving to create images that are not only visually stunning but also tell a compelling story. I believe that every picture should evoke feeling and preserve a moment in time.</p>
-                        <p>Whether it's the intimate connection between a newly married couple, the majestic grandeur of a landscape, or the candid joy of a family gathering, I aim to capture the essence of the subject. Let's create something beautiful together!</p>
-                        <!-- Optional: Add social media links or more details -->
-                         <div class="mt-3">
-                            <a href="#" class="btn btn-outline-light me-2"><i class="fab fa-instagram"></i> Instagram</a>
-                            <a href="#" class="btn btn-outline-light"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                        <p class="lead">Hi, I'm [Your Name]. For me, landscape photography isn't just about taking pictures; it's about capturing the feeling of a place, the story whispered by the wind, the light painting the mountains.</p>
+                        <p>My journey started [Number] years ago, chasing sunrises and exploring hidden trails. I'm driven by a deep connection to the natural world and a desire to share its breathtaking beauty and fragility through my lens.</p>
+                        <p>I specialize in [mention specific types like dramatic mountain scenes, serene coastal vistas, intimate forest details]. My goal is to create images that transport the viewer and evoke a sense of wonder. Explore the gallery, and perhaps you'll find a piece of the wild that speaks to you.</p>
+                         <div class="mt-4">
+                            <a href="#" class="btn btn-dark me-2"><i class="fab fa-instagram"></i> Follow on Instagram</a>
+                            <a href="#contact" class="btn btn-outline-dark"><i class="far fa-envelope"></i> Inquire About Prints</a>
                          </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Gallery Section -->
-        <section id="gallery" class="py-5 bg-dark">
-            <div class="container">
-                <h2 class="text-center mb-4 text-light">Gallery</h2>
-                <div class="row g-4">
-                    <!-- Gallery Item 1 -->
-                    <div class="col-md-6 col-lg-4">
-                        <div class="portfolio-card"> <!-- Renamed from quiz-card conceptually -->
-                             <div class="portfolio-image"> <!-- Renamed from quiz-image conceptually -->
-                                <img src="https://via.placeholder.com/400x300.png?text=Landscape+1" alt="Gallery Image 1">
-                            </div>
-                            <div class="portfolio-content"> <!-- Renamed from quiz-content conceptually -->
-                                <h5>Mountain View</h5>
-                                <p class="text-muted small">A majestic mountain range at dawn.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Gallery Item 2 -->
-                    <div class="col-md-6 col-lg-4">
-                        <div class="portfolio-card">
-                             <div class="portfolio-image">
-                                <img src="https://via.placeholder.com/400x300.png?text=Portrait+1" alt="Gallery Image 2">
-                            </div>
-                            <div class="portfolio-content">
-                                <h5>Urban Portrait</h5>
-                                <p class="text-muted small">Capturing style in the city streets.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Gallery Item 3 -->
-                    <div class="col-md-6 col-lg-4">
-                        <div class="portfolio-card">
-                             <div class="portfolio-image">
-                                <img src="https://via.placeholder.com/400x300.png?text=Wedding+Shot" alt="Gallery Image 3">
-                            </div>
-                            <div class="portfolio-content">
-                                <h5>Wedding Bliss</h5>
-                                <p class="text-muted small">A tender moment captured forever.</p>
-                            </div>
-                        </div>
-                    </div>
-                     <!-- Add more gallery items as needed -->
-                     <div class="col-md-6 col-lg-4">
-                        <div class="portfolio-card">
-                             <div class="portfolio-image">
-                                <img src="https://via.placeholder.com/400x300.png?text=Nature+Detail" alt="Gallery Image 4">
-                            </div>
-                            <div class="portfolio-content">
-                                <h5>Macro Wonder</h5>
-                                <p class="text-muted small">The intricate details of nature.</p>
-                            </div>
-                        </div>
-                    </div>
-                     <div class="col-md-6 col-lg-4">
-                        <div class="portfolio-card">
-                             <div class="portfolio-image">
-                                <img src="https://via.placeholder.com/400x300.png?text=Event+Photo" alt="Gallery Image 5">
-                            </div>
-                            <div class="portfolio-content">
-                                <h5>Event Energy</h5>
-                                <p class="text-muted small">The vibrant atmosphere of a live event.</p>
-                            </div>
-                        </div>
-                    </div>
-                     <div class="col-md-6 col-lg-4">
-                        <div class="portfolio-card">
-                             <div class="portfolio-image">
-                                <img src="https://via.placeholder.com/400x300.png?text=Seascape" alt="Gallery Image 6">
-                            </div>
-                            <div class="portfolio-content">
-                                <h5>Coastal Serenity</h5>
-                                <p class="text-muted small">Calm waters reflecting the sunset.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
         <!-- Blog Section -->
-        <section id="blog" class="py-5">
+        <section id="blog" class="py-5 bg-dark">
             <div class="container">
-                <h2 class="text-center mb-4">From The Blog</h2>
-                <div class="row g-4">
-                    <!-- Blog Post 1 -->
+                <h2 class="text-center mb-5 text-light">From The Journal</h2>
+                <div class="row g-4 justify-content-center">
+                    <!-- Blog Post 1 (Simplified Card) -->
                     <div class="col-md-6 col-lg-4">
-                        <div class="portfolio-card"> <!-- Reusing card style -->
-                            <div class="portfolio-image"> <!-- Optional: Featured Image -->
-                                <img src="https://via.placeholder.com/400x250.png?text=Blog+Post+1" alt="Blog Post 1 Image">
-                            </div>
-                            <div class="portfolio-content text-start"> <!-- Align text left for blog posts -->
-                                <h5>Choosing the Right Lens</h5>
-                                <p class="text-muted small">Published: Nov 10, 2023</p>
-                                <p>A quick guide to understanding focal lengths and aperture for beginners...</p>
-                                <a href="#" class="btn btn-sm btn-outline-light">Read More</a>
+                        <div class="blog-card">
+                            <a href="#"> <!-- Link to full post -->
+                                <img src="https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=876&q=80" class="card-img-top" alt="Blog Post 1 Image">
+                            </a>
+                            <div class="card-body">
+                                <h5 class="card-title"><a href="#" class="text-white text-decoration-none">Chasing the Aurora: A Night in Iceland</a></h5>
+                                <p class="card-text text-white-50 small mb-2">Published: Nov 15, 2023</p>
+                                <p class="card-text text-white-75">The story behind capturing the magical dance of the northern lights...</p>
+                                <a href="#" class="btn btn-sm btn-outline-primary">Read More</a>
                             </div>
                         </div>
                     </div>
                     <!-- Blog Post 2 -->
                      <div class="col-md-6 col-lg-4">
-                        <div class="portfolio-card">
-                             <div class="portfolio-image">
-                                <img src="https://via.placeholder.com/400x250.png?text=Blog+Post+2" alt="Blog Post 2 Image">
-                            </div>
-                            <div class="portfolio-content text-start">
-                                <h5>Mastering Golden Hour</h5>
-                                <p class="text-muted small">Published: Oct 25, 2023</p>
-                                <p>Tips and tricks for capturing stunning photos during the magical golden hour...</p>
-                                <a href="#" class="btn btn-sm btn-outline-light">Read More</a>
+                        <div class="blog-card">
+                            <a href="#">
+                                <img src="https://images.unsplash.com/photo-1505144808419-1957a94ca61e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=944&q=80" class="card-img-top" alt="Blog Post 2 Image">
+                             </a>
+                            <div class="card-body">
+                                <h5 class="card-title"><a href="#" class="text-white text-decoration-none">Finding Composition in the Chaos of the Coast</a></h5>
+                                <p class="card-text text-white-50 small mb-2">Published: Oct 28, 2023</p>
+                                <p class="card-text text-white-75">Techniques for simplifying seascapes and finding strong focal points...</p>
+                                <a href="#" class="btn btn-sm btn-outline-primary">Read More</a>
                             </div>
                         </div>
                     </div>
-                    <!-- Blog Post 3 -->
+                    <!-- Blog Post 3 (Optional - keep it focused) -->
+                    <!--
                     <div class="col-md-6 col-lg-4">
-                        <div class="portfolio-card">
-                            <div class="portfolio-image">
-                                <img src="https://via.placeholder.com/400x250.png?text=Blog+Post+3" alt="Blog Post 3 Image">
-                            </div>
-                            <div class="portfolio-content text-start">
-                                <h5>Post-Processing Essentials</h5>
-                                <p class="text-muted small">Published: Oct 05, 2023</p>
-                                <p>An overview of basic editing techniques to enhance your photographs...</p>
-                                <a href="#" class="btn btn-sm btn-outline-light">Read More</a>
-                            </div>
-                        </div>
+                       ...
                     </div>
-                    <!-- Add more blog posts as needed -->
+                    -->
                 </div>
-                 <div class="text-center mt-4">
-                    <a href="#" class="btn btn-primary">View All Blog Posts</a>
+                 <div class="text-center mt-5">
+                    <a href="#" class="btn btn-secondary">View All Journal Entries</a>
                  </div>
             </div>
         </section>
 
         <!-- Contact Section -->
-        <section id="contact" class="py-5 bg-dark">
+        <section id="contact" class="py-5 bg-secondary"> <!-- Different background -->
             <div class="container">
-                <h2 class="text-center mb-4 text-light">Get In Touch</h2>
+                <h2 class="text-center mb-4 text-white">Get In Touch</h2>
+                 <p class="text-center text-white-75 mb-5">Interested in prints, collaborations, or just want to say hello?</p>
                 <div class="row justify-content-center">
-                    <div class="col-md-8">
+                    <div class="col-md-8 col-lg-6">
                         <div id="contact-form-result" class="mb-3"></div> <!-- For AJAX feedback -->
                         <form id="contact-form">
-                            <div class="mb-3">
-                                <label for="name" class="form-label">Name</label>
-                                <input type="text" class="form-control bg-dark text-light border-secondary" id="name" name="name" required>
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="name" name="name" placeholder="Your Name" required>
+                                <label for="name">Name</label>
                             </div>
-                            <div class="mb-3">
-                                <label for="email" class="form-label">Email address</label>
-                                <input type="email" class="form-control bg-dark text-light border-secondary" id="email" name="email" required>
+                             <div class="form-floating mb-3">
+                                <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com" required>
+                                <label for="email">Email address</label>
                             </div>
-                             <div class="mb-3">
-                                <label for="subject" class="form-label">Subject</label>
-                                <input type="text" class="form-control bg-dark text-light border-secondary" id="subject" name="subject">
+                             <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject">
+                                <label for="subject">Subject (Optional)</label>
                             </div>
-                            <div class="mb-3">
-                                <label for="message" class="form-label">Message</label>
-                                <textarea class="form-control bg-dark text-light border-secondary" id="message" name="message" rows="5" required></textarea>
+                            <div class="form-floating mb-3">
+                                <textarea class="form-control" id="message" name="message" placeholder="Leave a message here" style="height: 150px" required></textarea>
+                                <label for="message">Message</label>
                             </div>
-                            <button type="submit" class="btn btn-success w-100">Send Message</button>
+                            <div class="d-grid"> <!-- Makes button full width -->
+                               <button type="submit" class="btn btn-primary btn-lg">Send Message</button>
+                            </div>
                         </form>
                     </div>
                 </div>
@@ -245,10 +232,16 @@
     </main>
 
     <!-- Footer -->
-    <footer class="py-4 bg-black text-center text-muted">
+    <footer class="py-5 bg-dark text-center text-white-50">
         <div class="container">
-            <p class="mb-0">© 2023 [Your Name] Photography. All Rights Reserved.</p>
-            <!-- Optional: Add social links or back-to-top button -->
+             <!-- Optional: Add social icons -->
+             <div class="mb-3">
+                <a href="#" class="text-white-50 me-3"><i class="fab fa-instagram fa-lg"></i></a>
+                <a href="#" class="text-white-50 me-3"><i class="fab fa-twitter fa-lg"></i></a>
+                <a href="#" class="text-white-50"><i class="fab fa-facebook-f fa-lg"></i></a>
+            </div>
+            <p class="mb-0 small">© 2023 [Your Name] Photography. All Rights Reserved.</p>
+            <p class="mb-0 small">Landscape photos courtesy of <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer" class="text-white-50">Unsplash</a></p> <!-- Credit example -->
         </div>
     </footer>
 
