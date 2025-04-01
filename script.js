@@ -2,41 +2,103 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
+    // --- Navbar Shrink Function ---
+    const mainNav = document.getElementById('mainNav');
+    if (mainNav) {
+        const navbarShrink = function () {
+            if (!mainNav) {
+                return;
+            }
+            if (window.scrollY === 0) {
+                mainNav.classList.remove('navbar-scrolled');
+            } else {
+                mainNav.classList.add('navbar-scrolled');
+            }
+        };
+
+        // Shrink the navbar
+        navbarShrink();
+
+        // Shrink the navbar when page is scrolled
+        document.addEventListener('scroll', navbarShrink);
+    }
+
+
     // --- Smooth Scrolling for Navbar Links ---
-    const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+    const navLinks = document.querySelectorAll('#navbarNav .nav-link');
 
     navLinks.forEach(link => {
         link.addEventListener('click', function(e) {
             const targetId = this.getAttribute('href');
-            // Check if it's an internal link
-            if (targetId && targetId.startsWith('#') && targetId.length > 1) {
+            // Check if it's an internal link within the page
+            if (targetId && targetId.startsWith('#') && targetId.length > 1 && document.querySelector(targetId)) {
                 e.preventDefault(); // Prevent default anchor jump
+
                 const targetElement = document.querySelector(targetId);
                 if (targetElement) {
-                    // Calculate position, accounting for sticky navbar height
-                    const navbarHeight = document.querySelector('.navbar').offsetHeight;
+                    // Recalculate navbar height *at the time of click*
+                    const navbarHeight = mainNav ? mainNav.offsetHeight : 0;
                     const elementPosition = targetElement.getBoundingClientRect().top;
-                    const offsetPosition = elementPosition + window.pageYOffset - navbarHeight;
+                    // Adjust scroll position precisely
+                    const offsetPosition = window.pageYOffset + elementPosition - navbarHeight;
 
                     window.scrollTo({
                         top: offsetPosition,
                         behavior: "smooth"
                     });
 
-                    // Optional: Close mobile navbar if open
+                    // Close mobile navbar if open
                     const navbarCollapse = document.querySelector('.navbar-collapse');
-                    if (navbarCollapse.classList.contains('show')) {
+                    if (navbarCollapse && navbarCollapse.classList.contains('show')) {
                         const toggler = document.querySelector('.navbar-toggler');
-                        toggler.click(); // Simulate click to close
+                        if (toggler) {
+                           toggler.click(); // Simulate click to close
+                        }
                     }
 
-                    // Optional: Update active link state (basic)
-                    navLinks.forEach(l => l.classList.remove('active'));
-                    this.classList.add('active');
+                    // // Basic active link update (the scroll handler below is better)
+                    // navLinks.forEach(l => l.classList.remove('active'));
+                    // this.classList.add('active');
                 }
             }
         });
     });
+
+     // --- Activate scrollspy to add active class to navbar items on scroll ---
+     // This is a simplified version. For perfect accuracy, consider a library or more robust logic.
+     const sections = document.querySelectorAll('section[id]'); // Target sections with IDs
+     const pageTopLink = document.querySelector('.navbar-brand[href="#page-top"]'); // Link to top
+
+     function updateActiveNavLinkOnScroll() {
+        let currentSectionId = '';
+        const scrollY = window.pageYOffset;
+        const navHeight = mainNav ? mainNav.offsetHeight : 70; // Estimate or get height
+
+        sections.forEach(section => {
+             const sectionTop = section.offsetTop - navHeight - 50; // Offset for nav + buffer
+             const sectionBottom = sectionTop + section.offsetHeight;
+
+             if (scrollY >= sectionTop && scrollY < sectionBottom) {
+                 currentSectionId = section.getAttribute('id');
+             }
+         });
+
+         navLinks.forEach(link => {
+             link.classList.remove('active');
+             if (link.getAttribute('href') === `#${currentSectionId}`) {
+                 link.classList.add('active');
+             }
+         });
+
+         // Handle page top (no section active)
+         if (!currentSectionId && scrollY < sections[0].offsetTop - navHeight - 50 && pageTopLink) {
+             navLinks.forEach(link => link.classList.remove('active')); // Deactivate all section links
+             // Optionally highlight the brand/home link if desired
+         }
+     }
+
+    window.addEventListener('scroll', updateActiveNavLinkOnScroll);
+    updateActiveNavLinkOnScroll(); // Initial check
 
     // --- Contact Form AJAX Submission ---
     const contactForm = document.getElementById('contact-form');
@@ -44,122 +106,53 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (contactForm) {
         contactForm.addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevent the default form submission
+            event.preventDefault();
 
-            formResultDiv.innerHTML = '<p class="text-info">Sending message...</p>'; // Provide immediate feedback
+            formResultDiv.innerHTML = '<p class="text-info small">Sending message...</p>';
             const submitButton = contactForm.querySelector('button[type="submit"]');
-            submitButton.disabled = true; // Disable button during submission
+            if(submitButton) submitButton.disabled = true;
 
             const formData = new FormData(contactForm);
-            const data = Object.fromEntries(formData.entries()); // Convert FormData to simple object
-
-            // **IMPORTANT**: Replace 'YOUR_SERVER_ENDPOINT_URL' with the actual URL
-            //              of your server-side script (e.g., a PHP file, Node.js route)
-            //              that will process the form data (e.g., send an email).
-            //              For demonstration, we'll simulate the fetch call.
+            const data = Object.fromEntries(formData.entries());
 
             const endpointUrl = 'YOUR_SERVER_ENDPOINT_URL'; // <<<< REPLACE THIS
 
-            // Simulate fetch call (replace with actual fetch)
             console.log("Simulating AJAX request to:", endpointUrl);
             console.log("Form Data:", data);
 
-            setTimeout(() => { // Simulate network delay
-                 // Simulate a successful response
-                const simulatedSuccess = true; // Change to false to test error handling
+            setTimeout(() => {
+                const simulatedSuccess = Math.random() > 0.2; // Simulate success most of the time
 
                 if (simulatedSuccess) {
-                    formResultDiv.innerHTML = '<p class="alert alert-success form-success">Message sent successfully! Thank you.</p>';
-                    contactForm.reset(); // Clear the form fields
+                    formResultDiv.innerHTML = '<div class="alert alert-success" role="alert">Message sent successfully! Thank you.</div>';
+                    contactForm.reset();
                 } else {
-                    // Simulate an error response
-                     formResultDiv.innerHTML = '<p class="alert alert-danger form-error">Sorry, there was an error sending your message. Please try again later.</p>';
+                     formResultDiv.innerHTML = '<div class="alert alert-danger" role="alert">Sorry, there was an error sending your message. Please try again later.</div>';
                 }
 
-                submitButton.disabled = false; // Re-enable button
+                if(submitButton) submitButton.disabled = false;
 
-                // Optional: Clear the message after a few seconds
                 setTimeout(() => {
                     formResultDiv.innerHTML = '';
-                }, 5000); // Clear after 5 seconds
+                }, 6000);
 
-            }, 1500); // Simulate 1.5 second delay
+            }, 1500);
 
             /*
-            // --- ACTUAL FETCH CALL (Use this when you have a backend) ---
-            fetch(endpointUrl, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    // Add any other headers if required (like CSRF tokens)
-                    'Accept': 'application/json'
-                },
-                body: JSON.stringify(data) // Send data as JSON
-            })
-            .then(response => {
-                if (!response.ok) {
-                    // If server response is not 2xx, throw an error
-                    return response.json().then(err => { throw err; }); // Try to parse error details if available
-                }
-                return response.json(); // Assuming server sends back JSON { success: true } or similar
-            })
-            .then(result => {
-                 if (result.success) { // Check the specific success flag from your server response
-                    formResultDiv.innerHTML = '<p class="alert alert-success form-success">Message sent successfully! Thank you.</p>';
-                    contactForm.reset();
-                 } else {
-                    // Handle server-side validation errors or other issues
-                     formResultDiv.innerHTML = `<p class="alert alert-warning form-error">Could not send message: ${result.message || 'Please check your input.'}</p>`;
-                 }
-            })
-            .catch(error => {
-                console.error('Error submitting form:', error);
-                formResultDiv.innerHTML = '<p class="alert alert-danger form-error">Sorry, there was a network error sending your message. Please try again later.</p>';
-            })
-            .finally(() => {
-                submitButton.disabled = false; // Re-enable button regardless of outcome
-                 // Optional: Clear the message after a few seconds
-                 setTimeout(() => {
-                    formResultDiv.innerHTML = '';
-                 }, 5000);
-            });
-            // --- END OF ACTUAL FETCH CALL ---
+            // --- ACTUAL FETCH CALL ---
+             fetch(endpointUrl, { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify(data) })
+                .then(response => { if (!response.ok) { return response.json().then(err => { throw err; }); } return response.json(); })
+                .then(result => {
+                     if (result.success) {
+                         formResultDiv.innerHTML = '<div class="alert alert-success">Message sent successfully! Thank you.</div>'; contactForm.reset();
+                     } else {
+                          formResultDiv.innerHTML = `<div class="alert alert-warning">Could not send message: ${result.message || 'Please check input.'}</div>`;
+                     } })
+                .catch(error => { console.error('Error submitting form:', error); formResultDiv.innerHTML = '<div class="alert alert-danger">Network error. Please try again later.</div>'; })
+                .finally(() => { if(submitButton) submitButton.disabled = false; setTimeout(() => { formResultDiv.innerHTML = ''; }, 6000); });
+            // --- END FETCH ---
             */
-
         });
     }
-
-    // --- Update Active Nav Link on Scroll ---
-    const sections = document.querySelectorAll('main section[id]');
-    const navbarHeight = document.querySelector('.navbar').offsetHeight;
-
-    function updateActiveNavLink() {
-        let currentSectionId = '';
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop - navbarHeight - 50; // Add some offset
-            const sectionBottom = sectionTop + section.offsetHeight;
-
-            if (window.pageYOffset >= sectionTop && window.pageYOffset < sectionBottom) {
-                currentSectionId = section.getAttribute('id');
-            }
-        });
-
-        navLinks.forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href') === `#${currentSectionId}`) {
-                link.classList.add('active');
-            }
-        });
-         // Handle edge case for top of page (Home)
-         if (!currentSectionId && window.pageYOffset < sections[0].offsetTop - navbarHeight - 50) {
-            navLinks.forEach(link => link.classList.remove('active'));
-            const homeLink = document.querySelector('.nav-link[href="#home"]');
-            if(homeLink) homeLink.classList.add('active');
-         }
-    }
-
-    window.addEventListener('scroll', updateActiveNavLink);
-    updateActiveNavLink(); // Initial check on load
-
 
 }); // End DOMContentLoaded
