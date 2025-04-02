@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Title will be updated dynamically by JavaScript -->
+    <title>Article - Bogdan Barbulescu Photography</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Add specific styles for article content if needed -->
+    <style>
+        /* Style images within the article */
+        #article-content img {
+            max-width: 100%;
+            height: auto;
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 8px; /* Optional: add rounded corners */
+            display: block; /* Ensure images are block-level for centering via margin */
+            margin-left: auto;
+            margin-right: auto;
+        }
+        /* Add some spacing between paragraphs */
+        #article-content p {
+            margin-bottom: 1.25rem;
+            line-height: 1.7; /* Improve readability */
+        }
+         /* Style headings within the article */
+        #article-content h1,
+        #article-content h2,
+        #article-content h3,
+        #article-content h4,
+        #article-content h5,
+        #article-content h6 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            font-family: var(--font-headings); /* Ensure heading font is used */
+             color: #fff; /* Ensure white color on dark background */
+        }
+         #article-content h1 { font-size: 2.5rem; }
+         #article-content h2 { font-size: 2rem; }
+         #article-content h3 { font-size: 1.75rem; }
+
+        /* Style blockquotes */
+         #article-content blockquote {
+            border-left: 4px solid var(--bs-primary);
+            padding-left: 1rem;
+            margin: 1.5rem 0;
+            font-style: italic;
+            color: rgba(var(--bs-white-rgb), 0.8);
+         }
+         /* Style code blocks (basic) */
+          #article-content pre {
+            background-color: #2c2c2c;
+            padding: 1rem;
+            border-radius: 5px;
+            overflow-x: auto; /* Allow horizontal scrolling for long code lines */
+          }
+          #article-content code {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9em;
+          }
+          #article-content pre code {
+             background-color: transparent; /* Code inside pre shouldn't have its own background */
+             color: #f0f0f0; /* Light color for code */
+          }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar (Copied, links adjusted) -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand" href="index.html#page-top">
+                <i class="fas fa-camera me-2"></i>Bogdan Barbulescu
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="gallery.html">Gallery</a>
+                    </li>
+                    <li class="nav-item">
+                        <!-- Link back to the main journal page -->
+                        <a class="nav-link" href="journal.html">Journal</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#about">About</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content Area - Article Display -->
+    <!-- Using bg-dark to avoid the color band -->
+    <main class="page-content bg-dark" style="padding-top: 8rem; padding-bottom: 3rem;">
+        <section id="article-display">
+             <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8"> <!-- Limit width for better readability -->
+
+                        <!-- Article Title (will be filled by JS) -->
+                        <h1 id="article-title" class="mb-3 text-light text-center">Loading Article...</h1>
+
+                        <!-- Article Meta (Optional: Date/Author - filled by JS) -->
+                        <p id="article-meta" class="text-center text-white-50 mb-5 small"></p>
+
+                        <!-- Content from Markdown file will be injected here -->
+                        <div id="article-content" class="text-white-75">
+                            <!-- Loading indicator or placeholder -->
+                            <p>Fetching content...</p>
+                        </div>
+
+                    </div><!-- /.col-lg-8 -->
+                </div><!-- /.row -->
+            </div><!-- /.container -->
+        </section>
+    </main>
+
+    <!-- Footer (Copied) -->
+    <footer class="py-5 bg-dark text-center text-white-50">
+        <div class="container">
+             <div class="mb-3">
+                <a href="#" class="text-white-50 me-3"><i class="fab fa-instagram fa-lg"></i></a>
+                <a href="#" class="text-white-50 me-3"><i class="fab fa-youtube fa-lg"></i></a>
+                <a href="#" class="text-white-50"><i class="fab fa-facebook-f fa-lg"></i></a>
+            </div>
+            <p class="mb-0 small">© 2025 Bogdan Barbulescu Photography. All Rights Reserved.</p>
+             </div>
+    </footer>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+    <!-- Marked.js Library (CDN) for Markdown Parsing -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+    <!-- Custom JavaScript for Article Loading -->
+    <script src="article.js"></script> <!-- We will create this file next -->
+
+</body>
+</html>
