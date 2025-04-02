@@ -1,0 +1,68 @@
+# --- Operating System Files ---
+# Ignore macOS system files
+.DS_Store
+# Ignore Windows thumbnail cache files
+Thumbs.db
+# Ignore Windows links
+*.lnk
+
+# --- IDEs / Text Editors ---
+# Ignore VS Code specific settings, history, etc.
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+# Ignore JetBrains IDEs (WebStorm, PhpStorm, etc.) folder
+.idea/
+
+# Ignore Sublime Text files
+*.sublime-project
+*.sublime-workspace
+
+# Ignore Atom editor settings
+.atom/
+
+# --- Dependencies ---
+# Ignore Node.js dependency folder (very important if you ever use npm/yarn)
+node_modules/
+npm-debug.log*
+yarn-error.log
+yarn-debug.log*
+pnpm-debug.log*
+
+# --- Build Output Folders (Good practice even if not used yet) ---
+# Common names for build output directories
+dist/
+build/
+out/
+public/ # Sometimes used for build output
+
+# --- Log Files ---
+# Ignore generic log files
+*.log
+logs/
+*.log.*
+
+# --- Temporary Files ---
+# Ignore common temporary files
+*.tmp
+*~
+*.temp
+
+# --- Environment Variables ---
+# Ignore environment variable files (contains secrets/API keys)
+.env
+.env.*
+!.env.example
+
+# --- Miscellaneous ---
+# Ignore compressed files unless specifically intended
+*.zip
+*.tar.*
+*.rar
+
+# Ignore local configuration overrides (if you use them)
+config.local.*
