@@ -18,6 +18,29 @@ document.addEventListener('DOMContentLoaded', () => {
         document.addEventListener('scroll', navbarShrink); // Run on scroll
     }
 
+    // --- Disable Right-Click on Images ---
+    // Select all images you want to protect. You might want to be more specific
+    // e.g., document.querySelectorAll('.portfolio-box img, #about img')
+    const protectedImages = document.querySelectorAll('img');
+
+    protectedImages.forEach(img => {
+        img.addEventListener('contextmenu', (e) => {
+            e.preventDefault(); // Stop the default context menu
+            // Optional: Show a message, but this can be annoying
+            // alert('Image downloading is disabled.');
+        });
+
+        // Optional: Add CSS to prevent dragging (less effective)
+        img.style.userDrag = 'none';
+        img.style.webkitUserDrag = 'none'; // For older Webkit browsers
+
+    });
+
+    // Optional: Disable right-click on the entire page body
+    // document.body.addEventListener('contextmenu', (e) => {
+    //    e.preventDefault();
+    // });
+
     // --- Smooth Scrolling for In-Page Links ---
     // Select links that point to IDs *on the current page*
     document.querySelectorAll('a.nav-link[href^="#"]').forEach(anchor => {
@@ -46,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-     // --- Activate scrollspy for sections ON THE CURRENT PAGE ---
+    // --- Activate scrollspy for sections ON THE CURRENT PAGE ---
     const sections = document.querySelectorAll('main section[id]'); // Target sections in main
     const navLinks = document.querySelectorAll('#navbarNav .nav-link[href^="#"]'); // Only target in-page nav links
 
@@ -58,29 +81,29 @@ document.addEventListener('DOMContentLoaded', () => {
         const navHeight = mainNav ? mainNav.offsetHeight : 70;
 
         sections.forEach(section => {
-             const sectionTop = section.offsetTop - navHeight - 50;
-             const sectionBottom = sectionTop + section.offsetHeight;
-             if (scrollY >= sectionTop && scrollY < sectionBottom) {
-                 currentSectionId = section.getAttribute('id');
-             }
-         });
+            const sectionTop = section.offsetTop - navHeight - 50;
+            const sectionBottom = sectionTop + section.offsetHeight;
+            if (scrollY >= sectionTop && scrollY < sectionBottom) {
+                currentSectionId = section.getAttribute('id');
+            }
+        });
 
-         navLinks.forEach(link => {
-             link.classList.remove('active');
-             // Check if the link's href matches the current section ID
-             if (link.getAttribute('href') === `#${currentSectionId}`) {
-                 link.classList.add('active');
-             }
-         });
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            // Check if the link's href matches the current section ID
+            if (link.getAttribute('href') === `#${currentSectionId}`) {
+                link.classList.add('active');
+            }
+        });
 
         // Handle page top if needed (only relevant on index.html)
-        if(document.body.contains(document.getElementById('page-top'))) { // Check if on index page
+        if (document.body.contains(document.getElementById('page-top'))) { // Check if on index page
             const homeBrandLink = document.querySelector('.navbar-brand[href="#page-top"]');
             if (!currentSectionId && scrollY < sections[0].offsetTop - navHeight - 50 && homeBrandLink) {
-                 navLinks.forEach(link => link.classList.remove('active'));
+                navLinks.forEach(link => link.classList.remove('active'));
             }
         }
-     }
+    }
     // Only add scroll listener if there are sections to spy on
     if (sections.length > 0) {
         window.addEventListener('scroll', updateActiveNavLinkOnScroll);
