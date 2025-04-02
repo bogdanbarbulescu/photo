@@ -1,8 +1,8 @@
 ---
 title: "Chasing the Aurora: A Night in Iceland"
-date: 2023-11-15 # Or the actual date you want to display
+date: 2023-11-15 
 author: "Bogdan Barbulescu"
-image: "https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=876&q=80" # Optional: Featured image URL
+image: "https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=876&q=80" 
 category: "Travel & Stories"
 ---
 
