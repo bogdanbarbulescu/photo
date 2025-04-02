@@ -6,8 +6,6 @@ image: "https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?ixlib=rb-4.
 category: "Travel & Stories"
 ---
 
-# Chasing the Aurora: A Night in Iceland
-
 Iceland. The name itself conjures images of vast, dramatic landscapes – volcanic fields, towering waterfalls, glaciers stretching towards the horizon. It’s a landscape photographer’s dream. But for many of us, myself included, the ultimate prize, the almost mythical experience sought in this land of fire and ice, is witnessing the Aurora Borealis. Seeing the Northern Lights dance across the Icelandic sky had been a personal goal for years, and this past autumn, I finally got my chance.
 
 This wasn't just about seeing them, though; it was about *capturing* them, about trying to translate that ethereal, otherworldly glow into an image that could share even a fraction of the magic. And let me tell you, the "chase" is real.
