@@ -119,7 +119,7 @@ header.hero-section {
   padding-bottom: 8rem;
   height: 100vh; /* Full viewport height */
   min-height: 40rem; /* Minimum height */
-  background-image: url('assets/images/IMG_hero.webp'); /* Placeholder */
+  background-image: url('assets/images/IMG-hero.jpg'); /* Placeholder */
   background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed; /* Parallax-like effect */
