@@ -1,12 +1,12 @@
 ---
 title: "Mastering Long Exposure: Water and Clouds"
-date: 2025-04-05 # Use current date or intended publication date
+date: 2025-04-05 
 author: "Bogdan Barbulescu"
 image: "https://images.unsplash.com/photo-1433838552652-f9a46b332c40?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80" # Example relevant image
 category: "Techniques & Tutorials"
 ---
 
-# Mastering Long Exposure: Water and Clouds
+
 
 One of the most captivating techniques in landscape photography is the long exposure. It allows us to transform familiar scenes, turning crashing waves into ethereal mist, waterfalls into silky ribbons, and daytime clouds into dramatic streaks across the sky. It's a method that reveals the passage of time within a single frame, adding a layer of magic and serenity to our images.
 
