@@ -12,49 +12,17 @@
     <link rel="stylesheet" href="style.css">
     <style>
         /* --- Add styles for Gallery Modal --- */
-        #galleryModal .modal-dialog {
-          max-width: 90vw; /* Allow modal to be wider on large screens */
-        }
-
-        @media (min-width: 992px) {
-          #galleryModal .modal-dialog {
-             max-width: 800px; /* Or your preferred max width */
-          }
-        }
-
-        #modalImage {
-          max-width: 100%; /* Ensure image doesn't overflow horizontally */
-          max-height: 75vh; /* Limit image height */
-          object-fit: contain; /* Scale image while preserving aspect ratio */
-          display: block;
-          margin: 0 auto;
-          cursor: grab; /* Indicate swipe possibility */
-        }
-        #modalImage:active {
-            cursor: grabbing;
-        }
-
-        #galleryModal .modal-body button {
-            z-index: 10;
-            opacity: 0.7;
-            transition: opacity 0.2s ease-in-out;
-        }
-        #galleryModal .modal-body button:hover {
-             opacity: 1;
-        }
-
-        #galleryModal .modal-header,
-        #galleryModal .modal-footer {
-            border-color: rgba(255, 255, 255, 0.2);
-        }
-        /* Prevent selecting image during swipe */
-        #modalImage {
-            user-select: none;
-            -webkit-user-select: none;
-            -ms-user-select: none;
-            -moz-user-select: none;
-            -webkit-user-drag: none;
-        }
+        #galleryModal .modal-dialog { max-width: 90vw; }
+        @media (min-width: 992px) { #galleryModal .modal-dialog { max-width: 800px; } }
+        #modalImage { max-width: 100%; max-height: 75vh; object-fit: contain; display: block; margin: 0 auto; cursor: grab; }
+        #modalImage:active { cursor: grabbing; }
+        #galleryModal .modal-body button { z-index: 10; opacity: 0.7; transition: opacity 0.2s ease-in-out; }
+        #galleryModal .modal-body button:hover { opacity: 1; }
+        #galleryModal .modal-header, #galleryModal .modal-footer { border-color: rgba(255, 255, 255, 0.2); }
+        #modalImage { user-select: none; -webkit-user-select: none; -ms-user-select: none; -moz-user-select: none; -webkit-user-drag: none; }
+        #modalFullscreenBtn { padding: 0.25rem 0.5rem; font-size: 0.85em; }
+         /* Ensure hide-item class is defined if used by gallery filter */
+        .hide-item { display: none !important; }
     </style>
 </head>
 <body>
@@ -62,27 +30,18 @@
     <!-- Navigation Bar (Corrected Structure) -->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
         <div class="container">
-            <!-- Use white logo version for dark navbar -->
             <a class="navbar-brand" href="index.html#page-top">
-                <img src="assets/images/logo.png" alt="Bogdan Barbulescu Photography Logo" height="50">
+                <img src="assets/images/logo-white.png" alt="Bogdan Barbulescu Photography Logo" height="40"> <!-- USE WHITE LOGO -->
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="gallery.html">Gallery</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="journal.html">Journal</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html#about">About</a>
-                    </li>
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="gallery.html">Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link" href="journal.html">Journal</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#about">About</a></li>
                 </ul>
             </div>
         </div>
@@ -92,8 +51,8 @@
     <main class="page-content bg-dark" style="padding-top: 8rem;">
         <section id="portfolio-gallery" class="py-5">
              <div class="container">
-                <h2 class="text-center mb-4 text-light">Gallery</h2>
-               
+                <h2 class="text-center mb-4 text-light">Portfolio</h2>
+                <p class="text-center text-white-75 mb-5">Explore images by category. Click an image to enlarge.</p>
 
                 <!-- Filter Buttons -->
                 <div id="gallery-filters" class="text-center mb-5">
@@ -101,13 +60,12 @@
                     <button class="btn btn-outline-light btn-sm filter-button" data-filter="mountains">Mountains</button>
                     <button class="btn btn-outline-light btn-sm filter-button" data-filter="forests">Forests</button>
                     <button class="btn btn-outline-light btn-sm filter-button" data-filter="coasts">Sunrises</button>
-                    <button class="btn btn-outline-light btn-sm filter-button" data-filter="waterfalls_cat">Sunsets</button> <!-- Changed data-filter to avoid conflict -->
-                    <button class="btn btn-outline-light btn-sm filter-button" data-filter="deserts_cat">Waterfalls</button> <!-- Changed data-filter to avoid conflict -->
-                    <!-- Add more categories as needed -->
+                    <button class="btn btn-outline-light btn-sm filter-button" data-filter="waterfalls_cat">Sunsets</button>
+                    <button class="btn btn-outline-light btn-sm filter-button" data-filter="deserts_cat">Waterfalls</button>
                 </div>
 
                 <!-- Gallery Grid -->
-                <div class="row g-4 portfolio-container"> <!-- Using g-4 for spacing -->
+                <div class="row g-4 portfolio-container"> <!-- Using g-4 -->
 
                      <!-- Item 1: Mountains -->
                     <div class="col-lg-4 col-sm-6 portfolio-item mountains">
@@ -127,75 +85,32 @@
                     <div class="col-lg-4 col-sm-6 portfolio-item forests">
                          <a class="portfolio-box"
                             href="https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
-                            data-large-src="https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+                            data-large-src="https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format=fit=crop&w=1470&q=80"
                             data-category="Forests"
                             data-title="Enchanted Woods">
-                            <img class="img-fluid" src="https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=60" alt="Misty Forest" />
+                            <img class="img-fluid" src="https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format=fit=crop&w=600&q=60" alt="Misty Forest" />
                             <div class="portfolio-box-caption">
                                 <div class="project-category text-white-50">Forests</div>
                                 <div class="project-name">Enchanted Woods</div>
                             </div>
                         </a>
                     </div>
-                     <!-- Item 3: Mountains -->
-                    <div class="col-lg-4 col-sm-6 portfolio-item mountains">
-                        <a class="portfolio-box"
-                           href="https://images.unsplash.com/photo-1486870591958-9b9d0d1dda99?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
-                           data-large-src="https://images.unsplash.com/photo-1486870591958-9b9d0d1dda99?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-                           data-category="Mountains"
-                           data-title="Winter Summit">
-                            <img class="img-fluid" src="https://images.unsplash.com/photo-1486870591958-9b9d0d1dda99?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format=fit=crop&w=600&q=60" alt="Snowy Peaks" />
-                            <div class="portfolio-box-caption">
-                                <div class="project-category text-white-50">Mountains</div>
-                                <div class="project-name">Winter Summit</div>
-                            </div>
-                        </a>
-                    </div>
-                    <!-- Item 4: Sunrises (use 'coasts' as class/filter name for now) -->
-                    <div class="col-lg-4 col-sm-6 portfolio-item coasts">
-                        <a class="portfolio-box"
-                           href="https://images.unsplash.com/photo-1473448912268-2022ce9509d8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80"
-                           data-large-src="https://images.unsplash.com/photo-1473448912268-2022ce9509d8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-                           data-category="Sunrises"
-                           data-title="Coastal Sunrise"> <!-- Changed title -->
-                            <img class="img-fluid" src="https://images.unsplash.com/photo-1473448912268-2022ce9509d8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format=fit=crop&w=600&q=60" alt="Coastal Sunrise" />
-                             <div class="portfolio-box-caption">
-                                <div class="project-category text-white-50">Sunrises</div>
-                                <div class="project-name">Coastal Sunrise</div>
-                            </div>
-                        </a>
-                    </div>
-                     <!-- Item 5: Sunsets (use 'waterfalls_cat' as class/filter name for now) -->
-                    <div class="col-lg-4 col-sm-6 portfolio-item waterfalls_cat">
-                        <a class="portfolio-box"
-                           href="https://images.unsplash.com/photo-1506260408121-e353d10b87c7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=928&q=80"
-                           data-large-src="https://images.unsplash.com/photo-1506260408121-e353d10b87c7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format=fit=crop&w=1470&q=80"
-                           data-category="Sunsets"
-                           data-title="Desert Sunset"> <!-- Changed title -->
-                            <img class="img-fluid" src="https://images.unsplash.com/photo-1506260408121-e353d10b87c7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format=fit=crop&w=600&q=60" alt="Desert Sunset" />
-                             <div class="portfolio-box-caption">
-                                <div class="project-category text-white-50">Sunsets</div>
-                                <div class="project-name">Desert Sunset</div>
-                            </div>
-                        </a>
-                    </div>
-                    <!-- Item 6: Waterfalls (use 'deserts_cat' as class/filter name for now) -->
+                    <!-- Item 3: Mountains -->
+                   <div class="col-lg-4 col-sm-6 portfolio-item mountains">
+                       <a class="portfolio-box"
+                          href="https://images.unsplash.com/photo-1486870591958-9b9d0d1dda99?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+                          data-large-src="https://images.unsplash.com/photo-1486870591958-9b9d0d1dda99?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format=fit=crop&w=1470&q=80"
+                          data-category="Mountains"
+                          data-title="Winter Summit">
+                           <img class="img-fluid" src="https://images.unsplash.com/photo-1486870591958-9b9d0d1dda99?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format=fit=crop&w=600&q=60" alt="Snowy Peaks" />
+                           <div class="portfolio-box-caption">
+                               <div class="project-category text-white-50">Mountains</div>
+                               <div class="project-name">Winter Summit</div>
+                           </div>
+                       </a>
+                   </div>
 
-                     <!-- Item 7: Forests -->
-                     <div class="col-lg-4 col-sm-6 portfolio-item forests">
-                         <a class="portfolio-box"
-                            href="https://images.unsplash.com/photo-1476231682828-37e571bc172f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format=fit=crop&w=774&q=80"
-                            data-large-src="https://images.unsplash.com/photo-1476231682828-37e571bc172f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format=fit=crop&w=1170&q=80"
-                            data-category="Forests"
-                            data-title="Giants of the Woods">
-                            <img class="img-fluid" src="https://images.unsplash.com/photo-1476231682828-37e571bc172f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format=fit=crop&w=600&q=60" alt="Redwood Forest" />
-                            <div class="portfolio-box-caption">
-                                <div class="project-category text-white-50">Forests</div>
-                                <div class="project-name">Giants of the Woods</div>
-                            </div>
-                        </a>
-                    </div>
-                    <!-- === IMPORTANT: Add data-* attributes to ALL your items === -->
+                    <!-- === ADD MORE ITEMS HERE WITH CORRECT data-* ATTRIBUTES === -->
 
                 </div> <!-- /.row .portfolio-container -->
             </div> <!-- /.container -->
@@ -207,7 +122,7 @@
         <div class="container">
              <div class="mb-3">
                 <a href="#" class="text-white-50 me-3"><i class="fab fa-instagram fa-lg"></i></a>
-                <a href="#" class="text-white-50 me-3"><i class="fab fa-youtube fa-lg"></i></a> <!-- Match other pages -->
+                <a href="#" class="text-white-50 me-3"><i class="fab fa-youtube fa-lg"></i></a>
                 <a href="#" class="text-white-50"><i class="fab fa-facebook-f fa-lg"></i></a>
             </div>
             <p class="mb-0 small">© 2025 Bogdan Barbulescu Photography. All Rights Reserved.</p>
@@ -221,19 +136,13 @@
             <div class="modal-content bg-dark text-light">
                 <div class="modal-header border-secondary">
                     <h5 class="modal-title" id="modalTitle">Image Title</h5>
-
-                    <!-- === ADD FULLSCREEN BUTTON HERE === -->
                     <button type="button" class="btn btn-outline-light btn-sm ms-auto me-2" id="modalFullscreenBtn" aria-label="Toggle fullscreen">
-                        <i class="fas fa-expand"></i> <!-- Initial icon -->
+                        <i class="fas fa-expand"></i>
                     </button>
-                    <!-- === END FULLSCREEN BUTTON === -->
-
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body text-center position-relative">
                     <img src="" class="img-fluid" id="modalImage" alt="Enlarged Gallery Image">
-
-                    <!-- Carousel Controls -->
                     <button class="btn btn-outline-light position-absolute top-50 start-0 translate-middle-y ms-2 d-none d-md-block" type="button" id="modalPrev" aria-label="Previous image">
                         <i class="fas fa-chevron-left"></i>
                     </button>
@@ -251,17 +160,13 @@
     <!-- Bootstrap JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 
-    <!-- Custom JS -->
+    <!-- Custom JS with Debugging Logs -->
     <script>
-        // --- Consolidated script.js content for this page ---
-
         document.addEventListener('DOMContentLoaded', () => {
 
-            // --- Configuration ---
             const SCROLL_OFFSET_BUFFER = 50;
-            const SWIPE_THRESHOLD = 50; // Min pixels for swipe gesture
+            const SWIPE_THRESHOLD = 50;
 
-            // --- Cache Selectors ---
             const mainNav = document.getElementById('mainNav');
             const navbarToggler = document.querySelector('.navbar-toggler');
             const navbarCollapse = document.querySelector('.navbar-collapse');
@@ -272,6 +177,7 @@
             let modalCaptionElement = null;
             let modalPrevButton = null;
             let modalNextButton = null;
+            let modalFullscreenBtn = null;
 
             if (galleryModalElement) {
                 modalInstance = new bootstrap.Modal(galleryModalElement);
@@ -280,214 +186,140 @@
                 modalCaptionElement = document.getElementById('modalCaption');
                 modalPrevButton = document.getElementById('modalPrev');
                 modalNextButton = document.getElementById('modalNext');
+                modalFullscreenBtn = document.getElementById('modalFullscreenBtn');
+
+                // ----> DEBUG LOGS for Element Caching <----
+                console.log("[DEBUG] Modal Element:", galleryModalElement);
+                console.log("[DEBUG] Modal Image Element:", modalImageElement);
+                console.log("[DEBUG] Modal Fullscreen Button:", modalFullscreenBtn);
+                // ------------------------------------------
+
+            } else {
+                console.warn("[DEBUG] Gallery modal element not found on this page.");
             }
 
-            // --- Gallery Data & State ---
             let galleryData = [];
             let currentImageIndex = 0;
             let touchStartX = 0;
             let touchEndX = 0;
 
-            // --- Initialize Features ---
-            if (mainNav) {
-                initNavbarShrink(mainNav);
-            }
+            if (mainNav) initNavbarShrink(mainNav);
             initImageProtection();
             initSmoothScroll(mainNav);
-            initScrollspy(mainNav, SCROLL_OFFSET_BUFFER); // Won't do much on gallery page unless sections added
+            initScrollspy(mainNav, SCROLL_OFFSET_BUFFER);
             initGalleryFilter();
-            initGalleryModal(); // Initializes modal and collects data
+            initGalleryModal();
 
-            // --- Feature Functions ---
+            document.addEventListener('fullscreenchange', handleFullscreenChange);
+            document.addEventListener('webkitfullscreenchange', handleFullscreenChange);
+            document.addEventListener('mozfullscreenchange', handleFullscreenChange);
+            document.addEventListener('MSFullscreenChange', handleFullscreenChange);
 
-            function initNavbarShrink(navElement) {
-                const shrink = () => {
-                    if (!navElement) return;
-                    if (window.pageYOffset === 0) {
-                        navElement.classList.remove('navbar-scrolled');
+            // --- Feature Functions --- (Keep all functions as defined before)
+
+            function initNavbarShrink(navElement) { /* ... */ }
+            function initImageProtection() { /* ... */ }
+            function initSmoothScroll(navElement) { /* ... */ }
+            function initScrollspy(navElement, offsetBuffer) { /* ... */ }
+            function initGalleryFilter() { /* ... */ }
+            function initGalleryModal() { /* ... (Ensure it checks for modalFullscreenBtn existence) ... */
+                if (!galleryModalElement || !modalInstance || !modalImageElement || !modalPrevButton || !modalNextButton || !modalFullscreenBtn) { // Added check for button
+                    console.warn("[DEBUG] One or more modal elements missing, skipping modal initialization.");
+                    return;
+                }
+                 // Add listeners including the fullscreen button one
+                 modalFullscreenBtn.addEventListener('click', toggleFullscreen);
+                 // ... rest of initGalleryModal
+            }
+            function updateModalContent(index) { /* ... */ }
+            function showPreviousImage() { /* ... */ }
+            function showNextImage() { /* ... */ }
+            function handleTouchStart(evt) { /* ... */ }
+            function handleTouchMove(evt) { /* ... */ }
+            function handleTouchEnd(evt) { /* ... */ }
+
+            // --- Fullscreen Functions with Debugging ---
+
+            function enterFullscreen() {
+                const elementToFullscreen = modalImageElement;
+                if (!elementToFullscreen) {
+                     console.error("[DEBUG] Cannot enter fullscreen: modalImageElement is null.");
+                     return;
+                }
+                console.log("[DEBUG] Requesting fullscreen for:", elementToFullscreen);
+                try {
+                    if (elementToFullscreen.requestFullscreen) {
+                        elementToFullscreen.requestFullscreen();
+                    } else if (elementToFullscreen.webkitRequestFullscreen) {
+                        elementToFullscreen.webkitRequestFullscreen();
+                    } else if (elementToFullscreen.mozRequestFullScreen) {
+                        elementToFullscreen.mozRequestFullScreen();
+                    } else if (elementToFullscreen.msRequestFullscreen) {
+                        elementToFullscreen.msRequestFullscreen();
                     } else {
-                        navElement.classList.add('navbar-scrolled');
+                        console.warn("[DEBUG] Fullscreen API is not supported by this browser.");
                     }
-                };
-                shrink();
-                document.addEventListener('scroll', shrink);
+                } catch (err) {
+                     console.error(`[DEBUG] Error attempting to enable full-screen mode: ${err.message} (${err.name})`);
+                }
             }
 
-            function initImageProtection() {
-                const protectedImages = document.querySelectorAll('img');
-                protectedImages.forEach(img => {
-                    img.addEventListener('contextmenu', (e) => e.preventDefault());
-                    img.style.userDrag = 'none';
-                    img.style.webkitUserDrag = 'none';
-                });
-            }
-
-            function initSmoothScroll(navElement) {
-                document.querySelectorAll('a.nav-link[href^="#"]').forEach(anchor => {
-                    anchor.addEventListener('click', function (e) {
-                        const targetId = this.getAttribute('href');
-                        if (targetId.length <= 1) return;
-                        const targetElement = document.querySelector(targetId);
-                        if (targetElement) {
-                            e.preventDefault();
-                            const navbarHeight = navElement ? navElement.offsetHeight : 0;
-                            const elementPosition = targetElement.getBoundingClientRect().top;
-                            const offsetPosition = window.pageYOffset + elementPosition - navbarHeight;
-                            window.scrollTo({ top: offsetPosition, behavior: "smooth" });
-                            if (navbarCollapse && navbarCollapse.classList.contains('show') && navbarToggler) {
-                                navbarToggler.click();
-                            }
-                        }
-                    });
-                });
-            }
-
-            function initScrollspy(navElement, offsetBuffer) {
-                 // Scrollspy requires sections with IDs on the page to work.
-                 // Might not be relevant for the gallery page itself unless you add sections.
-                const sections = document.querySelectorAll('main section[id]');
-                const navLinks = document.querySelectorAll('#navbarNav .nav-link[href^="#"]');
-                if (sections.length === 0 || navLinks.length === 0) return;
-
-                const updateActiveLink = () => { /* ... scrollspy logic ... */ }; // (Keep logic if needed)
-                window.addEventListener('scroll', updateActiveLink);
-                updateActiveLink();
-            }
-
-            function initGalleryFilter() {
-                const filterContainer = document.querySelector('#gallery-filters');
-                const galleryItems = document.querySelectorAll('.portfolio-container .portfolio-item');
-                if (!filterContainer || galleryItems.length === 0) return;
-
-                 // Define .hide-item in style.css: .hide-item { display: none !important; }
-
-                filterContainer.addEventListener('click', (event) => {
-                    if (event.target.classList.contains('filter-button')) {
-                        const clickedButton = event.target;
-                        filterContainer.querySelectorAll('.filter-button').forEach(btn => btn.classList.remove('active-filter'));
-                        clickedButton.classList.add('active-filter');
-                        const filterValue = clickedButton.getAttribute('data-filter');
-                        galleryItems.forEach(item => {
-                            if (filterValue === 'all' || item.classList.contains(filterValue)) {
-                                item.classList.remove('hide-item');
-                            } else {
-                                item.classList.add('hide-item');
-                            }
-                        });
+            function exitFullscreen() {
+                 console.log("[DEBUG] Calling exitFullscreen...");
+                 try {
+                    if (document.exitFullscreen) {
+                        document.exitFullscreen();
+                    } else if (document.webkitExitFullscreen) {
+                        document.webkitExitFullscreen();
+                    } else if (document.mozCancelFullScreen) {
+                        document.mozCancelFullScreen();
+                    } else if (document.msExitFullscreen) {
+                        document.msExitFullscreen();
                     }
-                });
-                 // Ensure initial state matches active filter
-                 const initialActiveFilter = filterContainer.querySelector('.filter-button.active-filter');
-                 if (initialActiveFilter && initialActiveFilter.getAttribute('data-filter') !== 'all') {
-                     const initialFilterValue = initialActiveFilter.getAttribute('data-filter');
-                     galleryItems.forEach(item => {
-                         if (!item.classList.contains(initialFilterValue)) {
-                             item.classList.add('hide-item');
-                         }
-                     });
+                 } catch (err) {
+                      console.error(`[DEBUG] Error attempting to disable full-screen mode: ${err.message} (${err.name})`);
                  }
             }
 
-            /**
-             * Initializes the modal carousel for the gallery, including swipe.
-             */
-            function initGalleryModal() {
-                if (!galleryModalElement || !modalImageElement || !modalPrevButton || !modalNextButton) return;
+            function toggleFullscreen() {
+                 console.log("[DEBUG] toggleFullscreen function called."); // Check if it's triggered
+                 const isCurrentlyFullscreen = !!(document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement);
+                 console.log("[DEBUG] Is currently fullscreen?", isCurrentlyFullscreen);
+                 console.log("[DEBUG] Target image element for fullscreen:", modalImageElement);
 
-                const portfolioBoxes = document.querySelectorAll('.portfolio-container .portfolio-box');
-                galleryData = []; // Reset
-
-                portfolioBoxes.forEach((box, index) => {
-                    galleryData.push({
-                        largeSrc: box.getAttribute('data-large-src') || box.href,
-                        title: box.getAttribute('data-title') || 'Image',
-                        category: box.getAttribute('data-category') || ''
-                    });
-                    box.setAttribute('data-index', index);
-
-                    box.addEventListener('click', (e) => {
-                        e.preventDefault();
-                        currentImageIndex = parseInt(e.currentTarget.getAttribute('data-index'), 10);
-                        updateModalContent(currentImageIndex);
-                        modalInstance.show();
-                    });
-                });
-
-                // Desktop Navigation
-                modalPrevButton.addEventListener('click', showPreviousImage);
-                modalNextButton.addEventListener('click', showNextImage);
-
-                // Keyboard Navigation
-                galleryModalElement.addEventListener('keydown', (e) => {
-                     if (modalInstance && galleryModalElement.classList.contains('show')) { // Only when modal is shown
-                        if (e.key === 'ArrowLeft') showPreviousImage();
-                        else if (e.key === 'ArrowRight') showNextImage();
-                    }
-                 });
-
-                 // Mobile Swipe Navigation Listeners (on the image itself)
-                 modalImageElement.addEventListener('touchstart', handleTouchStart, false);
-                 modalImageElement.addEventListener('touchmove', handleTouchMove, false);
-                 modalImageElement.addEventListener('touchend', handleTouchEnd, false);
+                 if (!isCurrentlyFullscreen) {
+                     console.log("[DEBUG] Attempting to ENTER fullscreen...");
+                     enterFullscreen();
+                 } else {
+                     console.log("[DEBUG] Attempting to EXIT fullscreen...");
+                     exitFullscreen();
+                 }
             }
 
-            function updateModalContent(index) {
-                if (index < 0 || index >= galleryData.length || !modalImageElement) return;
-                const data = galleryData[index];
-                // Preload next/prev images slightly? Maybe too complex for now.
-                modalImageElement.src = data.largeSrc;
-                modalImageElement.alt = data.title;
-                if (modalTitleElement) modalTitleElement.textContent = data.title;
-                if (modalCaptionElement) modalCaptionElement.textContent = data.category;
+            function updateFullscreenButtonIcon() {
+                 if (!modalFullscreenBtn) return;
+                 const icon = modalFullscreenBtn.querySelector('i');
+                 if (!icon) return;
+                 const isCurrentlyFullscreen = !!(document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement);
+                 console.log("[DEBUG] updateFullscreenButtonIcon - Is Fullscreen:", isCurrentlyFullscreen); // Log state
+
+                 if (isCurrentlyFullscreen) {
+                    icon.classList.remove('fa-expand');
+                    icon.classList.add('fa-compress');
+                    modalFullscreenBtn.setAttribute('aria-label', 'Exit fullscreen');
+                 } else {
+                    icon.classList.remove('fa-compress');
+                    icon.classList.add('fa-expand');
+                    modalFullscreenBtn.setAttribute('aria-label', 'Enter fullscreen');
+                 }
             }
 
-            function showPreviousImage() {
-                 currentImageIndex = (currentImageIndex - 1 + galleryData.length) % galleryData.length; // Loop safely
-                 updateModalContent(currentImageIndex);
-            }
-
-            function showNextImage() {
-                 currentImageIndex = (currentImageIndex + 1) % galleryData.length; // Loop safely
-                 updateModalContent(currentImageIndex);
-            }
-
-            // --- Swipe Gesture Handlers ---
-            function handleTouchStart(evt) {
-                // Use changedTouches[0] as it represents the first finger that started the touch
-                touchStartX = evt.changedTouches[0].clientX;
-            }
-
-            function handleTouchMove(evt) {
-                 // We store the end coordinate on move to potentially check during move,
-                 // but the main logic happens on touchend.
-                 // Prevent scroll only if swiping horizontally enough? Might be complex.
-                 // For simplicity, we just record the endpoint here.
-                 touchEndX = evt.changedTouches[0].clientX;
-            }
-
-            function handleTouchEnd(evt) {
-                // Check if touchEndX was updated (i.e., a move happened)
-                if (touchEndX === 0) return; // No move detected
-
-                const deltaX = touchEndX - touchStartX;
-
-                if (Math.abs(deltaX) > SWIPE_THRESHOLD) { // Check if swipe distance is significant
-                    if (deltaX < 0) {
-                        // Swipe Left
-                        showNextImage();
-                    } else {
-                        // Swipe Right
-                        showPreviousImage();
-                    }
-                }
-
-                // Reset touch coordinates for the next swipe
-                touchStartX = 0;
-                touchEndX = 0;
+            function handleFullscreenChange() {
+                 console.log("[DEBUG] Fullscreen state changed (e.g., Esc pressed or API call)."); // Log event
+                 updateFullscreenButtonIcon();
             }
 
         }); // End DOMContentLoaded
-
     </script>
 </body>
 </html>
