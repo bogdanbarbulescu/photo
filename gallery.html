@@ -233,10 +233,16 @@
             <div class="modal-content bg-dark text-light">
                 <div class="modal-header border-secondary">
                     <h5 class="modal-title" id="modalTitle">Image Title</h5>
+
+                    <!-- === ADD FULLSCREEN BUTTON HERE === -->
+                    <button type="button" class="btn btn-outline-light btn-sm ms-auto me-2" id="modalFullscreenBtn" aria-label="Toggle fullscreen">
+                        <i class="fas fa-expand"></i> <!-- Initial icon -->
+                    </button>
+                    <!-- === END FULLSCREEN BUTTON === -->
+
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body text-center position-relative">
-                    <!-- Image will be loaded here -->
                     <img src="" class="img-fluid" id="modalImage" alt="Enlarged Gallery Image">
 
                     <!-- Carousel Controls -->
