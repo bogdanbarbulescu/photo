@@ -2,7 +2,7 @@
 title: "Mastering Long Exposure: Water and Clouds"
 date: 2025-04-05 
 author: "Bogdan Barbulescu"
-image: "https://images.unsplash.com/photo-1433838552652-f9a46b332c40?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80" # Example relevant image
+image: "assets/images/vaioaga.jpg" # Example relevant image
 category: "Techniques & Tutorials"
 ---
 
@@ -49,8 +49,8 @@ Here’s a typical workflow for capturing a long exposure landscape:
 7.  **Take the Shot:** Use your remote release or timer. If in Bulb mode, start the exposure with the remote and use a timer (on your phone or watch) to know when to end it by pressing the remote button again.
 8.  **Review:** Check the histogram on your camera's LCD to ensure the exposure is good (not clipped in highlights or shadows). Zoom in to check for sharpness and unwanted blur from vibration. Adjust exposure time if necessary and repeat.
 
-![Example Long Exposure Photo](https://images.unsplash.com/photo-150176971 MzUzfDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80)
-*(Caption: Silky smooth water effect achieved with a 15-second exposure using an ND filter.)*
+![Example Long Exposure Photo](assets/images/vaioaga.jpg)
+Silky smooth water effect achieved with a 1-second exposure using an ND filter.
 
 ## Creative Applications
 

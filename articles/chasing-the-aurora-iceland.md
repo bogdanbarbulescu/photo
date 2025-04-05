@@ -2,7 +2,7 @@
 title: "Chasing the Aurora: A Night in Iceland"
 date: 2023-11-15 
 author: "Bogdan Barbulescu"
-image: "https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=876&q=80" 
+image: "assets/images/aurora.jpg" 
 category: "Travel & Stories"
 ---
 
@@ -30,8 +30,8 @@ And then, it happened. A faint, pale green arc materialized low on the horizon, 
 
 What started as a subtle glow transformed over the next hour into vibrant ribbons of light dancing across the heavens. Greens dominated, but hints of purple and pink flickered at the edges. The shapes morphed constantly – sometimes slow, majestic curtains, other times rapid, swirling patterns. It was utterly silent, yet the sky felt alive. It's a humbling, awe-inspiring spectacle that truly makes you feel small in the face of nature's grandeur.
 
-![Placeholder: Insert an image of the aurora display here](https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=876&q=80)
-*(Caption: The aurora putting on a show over the Icelandic landscape)*
+![Placeholder: Insert an image of the aurora display here](assets/images/aurora.jpg)
+The aurora putting on a show over the Icelandic landscape
 
 ## Capturing the Dance
 

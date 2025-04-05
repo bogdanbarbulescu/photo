@@ -1,35 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gallery - Bogdan Barbulescu Photography</title>
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css">
     <style>
         /* --- Add styles for Gallery Modal --- */
         #galleryModal .modal-dialog {
-          max-width: 90vw; /* Allow modal to be wider on large screens */
+            max-width: 90vw;
+            /* Allow modal to be wider on large screens */
         }
 
         @media (min-width: 992px) {
-          #galleryModal .modal-dialog {
-             max-width: 800px; /* Or your preferred max width */
-          }
+            #galleryModal .modal-dialog {
+                max-width: 800px;
+                /* Or your preferred max width */
+            }
         }
 
         #modalImage {
-          max-width: 100%; /* Ensure image doesn't overflow horizontally */
-          max-height: 75vh; /* Limit image height */
-          object-fit: contain; /* Scale image while preserving aspect ratio */
-          display: block;
-          margin: 0 auto;
-          cursor: grab; /* Indicate swipe possibility */
+            max-width: 100%;
+            /* Ensure image doesn't overflow horizontally */
+            max-height: 75vh;
+            /* Limit image height */
+            object-fit: contain;
+            /* Scale image while preserving aspect ratio */
+            display: block;
+            margin: 0 auto;
+            cursor: grab;
+            /* Indicate swipe possibility */
         }
+
         #modalImage:active {
             cursor: grabbing;
         }
@@ -39,14 +50,16 @@
             opacity: 0.7;
             transition: opacity 0.2s ease-in-out;
         }
+
         #galleryModal .modal-body button:hover {
-             opacity: 1;
+            opacity: 1;
         }
 
         #galleryModal .modal-header,
         #galleryModal .modal-footer {
             border-color: rgba(255, 255, 255, 0.2);
         }
+
         /* Prevent selecting image during swipe */
         #modalImage {
             user-select: none;
@@ -57,6 +70,7 @@
         }
     </style>
 </head>
+
 <body>
 
     <!-- Navigation Bar (Corrected Structure) -->
@@ -66,7 +80,8 @@
             <a class="navbar-brand" href="index.html#page-top">
                 <img src="assets/images/logo.png" alt="Bogdan Barbulescu Photography Logo" height="50">
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
@@ -91,110 +106,104 @@
     <!-- Main Content - Gallery Page -->
     <main class="page-content bg-dark" style="padding-top: 8rem;">
         <section id="portfolio-gallery" class="py-5">
-             <div class="container">
+            <div class="container">
                 <h2 class="text-center mb-4 text-light">Gallery</h2>
-               
+
 
                 <!-- Filter Buttons -->
                 <div id="gallery-filters" class="text-center mb-5">
-                    <button class="btn btn-outline-light btn-sm filter-button active-filter" data-filter="all">All</button>
-                    <button class="btn btn-outline-light btn-sm filter-button" data-filter="mountains">Mountains</button>
+                    <button class="btn btn-outline-light btn-sm filter-button active-filter"
+                        data-filter="all">All</button>
+                    <button class="btn btn-outline-light btn-sm filter-button"
+                        data-filter="mountains">Mountains</button>
                     <button class="btn btn-outline-light btn-sm filter-button" data-filter="forests">Forests</button>
-                    <button class="btn btn-outline-light btn-sm filter-button" data-filter="coasts">Sunrises</button>
-                    <button class="btn btn-outline-light btn-sm filter-button" data-filter="waterfalls_cat">Sunsets</button> <!-- Changed data-filter to avoid conflict -->
-                    <button class="btn btn-outline-light btn-sm filter-button" data-filter="deserts_cat">Waterfalls</button> <!-- Changed data-filter to avoid conflict -->
+                    <button class="btn btn-outline-light btn-sm filter-button" data-filter="sunrises">Sunrises</button>
+                    <button class="btn btn-outline-light btn-sm filter-button" data-filter="sunsets">Sunsets</button>
+                    <button class="btn btn-outline-light btn-sm filter-button"
+                        data-filter="waterfalls">Waterfalls</button>
+                    <button class="btn btn-outline-light btn-sm filter-button" data-filter="aurora">Aurora</button>
+                    <button class="btn btn-outline-light btn-sm filter-button" data-filter="bw">B&W</button>
                     <!-- Add more categories as needed -->
                 </div>
 
                 <!-- Gallery Grid -->
                 <div class="row g-4 portfolio-container"> <!-- Using g-4 for spacing -->
 
-                     <!-- Item 1: Mountains -->
+                    <!-- Item 1: Mountains -->
                     <div class="col-lg-4 col-sm-6 portfolio-item mountains">
-                        <a class="portfolio-box"
-                           href="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
-                           data-large-src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-                           data-category="Mountains"
-                           data-title="Alpine Lake Reflection">
-                            <img class="img-fluid" src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format=fit=crop&w=600&q=60" alt="Alpine Lake" />
+                        <a class="portfolio-box" href="assets/images/bucegi.jpg"
+                            data-large-src="assets/images/bucegi.jpg" data-category="Mountains" data-title="Giants">
+                            <img class="img-fluid" src="assets/images/bucegi.jpg" alt="Bucegi" />
                             <div class="portfolio-box-caption">
                                 <div class="project-category text-white-50">Mountains</div>
-                                <div class="project-name">Alpine Lake Reflection</div>
+                                <div class="project-name">Giants</div>
                             </div>
                         </a>
                     </div>
-                    <!-- Item 2: Forests -->
-                    <div class="col-lg-4 col-sm-6 portfolio-item forests">
-                         <a class="portfolio-box"
-                            href="https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
-                            data-large-src="https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-                            data-category="Forests"
-                            data-title="Enchanted Woods">
-                            <img class="img-fluid" src="https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=60" alt="Misty Forest" />
-                            <div class="portfolio-box-caption">
-                                <div class="project-category text-white-50">Forests</div>
-                                <div class="project-name">Enchanted Woods</div>
-                            </div>
-                        </a>
-                    </div>
-                     <!-- Item 3: Mountains -->
-                    <div class="col-lg-4 col-sm-6 portfolio-item mountains">
-                        <a class="portfolio-box"
-                           href="https://images.unsplash.com/photo-1486870591958-9b9d0d1dda99?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
-                           data-large-src="https://images.unsplash.com/photo-1486870591958-9b9d0d1dda99?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-                           data-category="Mountains"
-                           data-title="Winter Summit">
-                            <img class="img-fluid" src="https://images.unsplash.com/photo-1486870591958-9b9d0d1dda99?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format=fit=crop&w=600&q=60" alt="Snowy Peaks" />
-                            <div class="portfolio-box-caption">
-                                <div class="project-category text-white-50">Mountains</div>
-                                <div class="project-name">Winter Summit</div>
-                            </div>
-                        </a>
-                    </div>
-                    <!-- Item 4: Sunrises (use 'coasts' as class/filter name for now) -->
-                    <div class="col-lg-4 col-sm-6 portfolio-item coasts">
-                        <a class="portfolio-box"
-                           href="https://images.unsplash.com/photo-1473448912268-2022ce9509d8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80"
-                           data-large-src="https://images.unsplash.com/photo-1473448912268-2022ce9509d8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-                           data-category="Sunrises"
-                           data-title="Coastal Sunrise"> <!-- Changed title -->
-                            <img class="img-fluid" src="https://images.unsplash.com/photo-1473448912268-2022ce9509d8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format=fit=crop&w=600&q=60" alt="Coastal Sunrise" />
-                             <div class="portfolio-box-caption">
-                                <div class="project-category text-white-50">Sunrises</div>
-                                <div class="project-name">Coastal Sunrise</div>
-                            </div>
-                        </a>
-                    </div>
-                     <!-- Item 5: Sunsets (use 'waterfalls_cat' as class/filter name for now) -->
-                    <div class="col-lg-4 col-sm-6 portfolio-item waterfalls_cat">
-                        <a class="portfolio-box"
-                           href="https://images.unsplash.com/photo-1506260408121-e353d10b87c7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=928&q=80"
-                           data-large-src="https://images.unsplash.com/photo-1506260408121-e353d10b87c7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format=fit=crop&w=1470&q=80"
-                           data-category="Sunsets"
-                           data-title="Desert Sunset"> <!-- Changed title -->
-                            <img class="img-fluid" src="https://images.unsplash.com/photo-1506260408121-e353d10b87c7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format=fit=crop&w=600&q=60" alt="Desert Sunset" />
-                             <div class="portfolio-box-caption">
-                                <div class="project-category text-white-50">Sunsets</div>
-                                <div class="project-name">Desert Sunset</div>
-                            </div>
-                        </a>
-                    </div>
-                    <!-- Item 6: Waterfalls (use 'deserts_cat' as class/filter name for now) -->
 
-                     <!-- Item 7: Forests -->
-                     <div class="col-lg-4 col-sm-6 portfolio-item forests">
-                         <a class="portfolio-box"
-                            href="https://images.unsplash.com/photo-1476231682828-37e571bc172f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format=fit=crop&w=774&q=80"
-                            data-large-src="https://images.unsplash.com/photo-1476231682828-37e571bc172f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format=fit=crop&w=1170&q=80"
-                            data-category="Forests"
-                            data-title="Giants of the Woods">
-                            <img class="img-fluid" src="https://images.unsplash.com/photo-1476231682828-37e571bc172f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format=fit=crop&w=600&q=60" alt="Redwood Forest" />
+                    <!-- Item 2: Waterfalls -->
+                    <div class="col-lg-4 col-sm-6 portfolio-item waterfalls">
+                        <a class="portfolio-box" href="assets/images/IMG_hero.webp"
+                            data-large-src="assets/images/IMG_hero.webp" data-category="Waterfalls"
+                            data-title="Waterfalls">
+                            <img class="img-fluid" src="assets/images/IMG_hero.webp" alt="Bucegi" />
                             <div class="portfolio-box-caption">
-                                <div class="project-category text-white-50">Forests</div>
-                                <div class="project-name">Giants of the Woods</div>
+                                <div class="project-category text-white-50">Waterfalls</div>
+                                <div class="project-name">Waterfalls</div>
                             </div>
                         </a>
                     </div>
+
+                    <!-- Item 3: Mountains -->
+                    <div class="col-lg-4 col-sm-6 portfolio-item mountains">
+                        <a class="portfolio-box" href="assets/images/frozen.jpg"
+                            data-large-src="assets/images/frozen.jpg" data-category="Mountains" data-title="Winter">
+                            <img class="img-fluid" src="assets/images/frozen.jpg" alt="Snowy Peaks" />
+                            <div class="portfolio-box-caption">
+                                <div class="project-category text-white-50">Mountains</div>
+                                <div class="project-name">Giants</div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Item 4: Aurora  -->
+                    <div class="col-lg-4 col-sm-6 portfolio-item aurora">
+                        <a class="portfolio-box" href="assets/images/aurora.jpg"
+                            data-large-src="assets/images/aurora.jpg" data-category="Aurora"
+                            data-title="Chasing Aurora">
+                            <img class="img-fluid" src="assets/images/aurora.jpg" alt="Chasing Aurora" />
+                            <div class="portfolio-box-caption">
+                                <div class="project-category text-white-50">Aurora</div>
+                                <div class="project-name">Chasing Aurora</div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Item 5: Sunrises  -->
+                    <div class="col-lg-4 col-sm-6 portfolio-item sunrises">
+                        <a class="portfolio-box" href="assets/images/nature4.webp"
+                            data-large-src="assets/images/nature4.webp" data-category="Sunrises"
+                            data-title="Coastal Sunrise"> <!-- Changed title -->
+                            <img class="img-fluid" src="assets/images/nature4.webp" alt="Sunrises" />
+                            <div class="portfolio-box-caption">
+                                <div class="project-category text-white-50">Sunrises</div>
+                                <div class="project-name">Sunrises</div>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <!-- Item 6: Sunsets  -->
+                    <div class="col-lg-4 col-sm-6 portfolio-item sunsets">
+                        <a class="portfolio-box" href="assets/images/road.jpg" data-large-src="assets/images/road.jpg"
+                            data-category="Sunsets" data-title="Desert Sunset"> <!-- Changed title -->
+                            <img class="img-fluid" src="assets/images/road.jpg" alt="Desert Sunset" />
+                            <div class="portfolio-box-caption">
+                                <div class="project-category text-white-50">Sunsets</div>
+                                <div class="project-name">Sunset</div>
+                            </div>
+                        </a>
+                    </div>
+
                     <!-- === IMPORTANT: Add data-* attributes to ALL your items === -->
 
                 </div> <!-- /.row .portfolio-container -->
@@ -205,13 +214,14 @@
     <!-- Footer -->
     <footer class="py-5 bg-dark text-center text-white-50">
         <div class="container">
-             <div class="mb-3">
+            <div class="mb-3">
                 <a href="#" class="text-white-50 me-3"><i class="fab fa-instagram fa-lg"></i></a>
-                <a href="#" class="text-white-50 me-3"><i class="fab fa-youtube fa-lg"></i></a> <!-- Match other pages -->
+                <a href="#" class="text-white-50 me-3"><i class="fab fa-youtube fa-lg"></i></a>
+                <!-- Match other pages -->
                 <a href="#" class="text-white-50"><i class="fab fa-facebook-f fa-lg"></i></a>
             </div>
             <p class="mb-0 small">© 2025 Bogdan Barbulescu Photography. All Rights Reserved.</p>
-            </div>
+        </div>
     </footer>
 
     <!-- Gallery Modal -->
@@ -222,33 +232,41 @@
                     <h5 class="modal-title" id="modalTitle">Image Title</h5>
 
                     <!-- === ADD FULLSCREEN BUTTON HERE === -->
-                    <button type="button" class="btn btn-outline-light btn-sm ms-auto me-2" id="modalFullscreenBtn" aria-label="Toggle fullscreen">
+                    <button type="button" class="btn btn-outline-light btn-sm ms-auto me-2" id="modalFullscreenBtn"
+                        aria-label="Toggle fullscreen">
                         <i class="fas fa-expand"></i> <!-- Initial icon -->
                     </button>
                     <!-- === END FULLSCREEN BUTTON === -->
 
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
                 </div>
                 <div class="modal-body text-center position-relative">
                     <img src="" class="img-fluid" id="modalImage" alt="Enlarged Gallery Image">
 
                     <!-- Carousel Controls -->
-                    <button class="btn btn-outline-light position-absolute top-50 start-0 translate-middle-y ms-2 d-none d-md-block" type="button" id="modalPrev" aria-label="Previous image">
+                    <button
+                        class="btn btn-outline-light position-absolute top-50 start-0 translate-middle-y ms-2 d-none d-md-block"
+                        type="button" id="modalPrev" aria-label="Previous image">
                         <i class="fas fa-chevron-left"></i>
                     </button>
-                    <button class="btn btn-outline-light position-absolute top-50 end-0 translate-middle-y me-2 d-none d-md-block" type="button" id="modalNext" aria-label="Next image">
+                    <button
+                        class="btn btn-outline-light position-absolute top-50 end-0 translate-middle-y me-2 d-none d-md-block"
+                        type="button" id="modalNext" aria-label="Next image">
                         <i class="fas fa-chevron-right"></i>
                     </button>
                 </div>
-                 <div class="modal-footer border-secondary justify-content-center">
-                     <p id="modalCaption" class="mb-0 text-white-75 small">Category</p>
-                 </div>
+                <div class="modal-footer border-secondary justify-content-center">
+                    <p id="modalCaption" class="mb-0 text-white-75 small">Category</p>
+                </div>
             </div>
         </div>
     </div>
 
     <!-- Bootstrap JS Bundle -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
 
     <!-- Custom JS -->
     <script>
@@ -342,8 +360,8 @@
             }
 
             function initScrollspy(navElement, offsetBuffer) {
-                 // Scrollspy requires sections with IDs on the page to work.
-                 // Might not be relevant for the gallery page itself unless you add sections.
+                // Scrollspy requires sections with IDs on the page to work.
+                // Might not be relevant for the gallery page itself unless you add sections.
                 const sections = document.querySelectorAll('main section[id]');
                 const navLinks = document.querySelectorAll('#navbarNav .nav-link[href^="#"]');
                 if (sections.length === 0 || navLinks.length === 0) return;
@@ -358,7 +376,7 @@
                 const galleryItems = document.querySelectorAll('.portfolio-container .portfolio-item');
                 if (!filterContainer || galleryItems.length === 0) return;
 
-                 // Define .hide-item in style.css: .hide-item { display: none !important; }
+                // Define .hide-item in style.css: .hide-item { display: none !important; }
 
                 filterContainer.addEventListener('click', (event) => {
                     if (event.target.classList.contains('filter-button')) {
@@ -375,16 +393,16 @@
                         });
                     }
                 });
-                 // Ensure initial state matches active filter
-                 const initialActiveFilter = filterContainer.querySelector('.filter-button.active-filter');
-                 if (initialActiveFilter && initialActiveFilter.getAttribute('data-filter') !== 'all') {
-                     const initialFilterValue = initialActiveFilter.getAttribute('data-filter');
-                     galleryItems.forEach(item => {
-                         if (!item.classList.contains(initialFilterValue)) {
-                             item.classList.add('hide-item');
-                         }
-                     });
-                 }
+                // Ensure initial state matches active filter
+                const initialActiveFilter = filterContainer.querySelector('.filter-button.active-filter');
+                if (initialActiveFilter && initialActiveFilter.getAttribute('data-filter') !== 'all') {
+                    const initialFilterValue = initialActiveFilter.getAttribute('data-filter');
+                    galleryItems.forEach(item => {
+                        if (!item.classList.contains(initialFilterValue)) {
+                            item.classList.add('hide-item');
+                        }
+                    });
+                }
             }
 
             /**
@@ -418,16 +436,16 @@
 
                 // Keyboard Navigation
                 galleryModalElement.addEventListener('keydown', (e) => {
-                     if (modalInstance && galleryModalElement.classList.contains('show')) { // Only when modal is shown
+                    if (modalInstance && galleryModalElement.classList.contains('show')) { // Only when modal is shown
                         if (e.key === 'ArrowLeft') showPreviousImage();
                         else if (e.key === 'ArrowRight') showNextImage();
                     }
-                 });
+                });
 
-                 // Mobile Swipe Navigation Listeners (on the image itself)
-                 modalImageElement.addEventListener('touchstart', handleTouchStart, false);
-                 modalImageElement.addEventListener('touchmove', handleTouchMove, false);
-                 modalImageElement.addEventListener('touchend', handleTouchEnd, false);
+                // Mobile Swipe Navigation Listeners (on the image itself)
+                modalImageElement.addEventListener('touchstart', handleTouchStart, false);
+                modalImageElement.addEventListener('touchmove', handleTouchMove, false);
+                modalImageElement.addEventListener('touchend', handleTouchEnd, false);
             }
 
             function updateModalContent(index) {
@@ -441,13 +459,13 @@
             }
 
             function showPreviousImage() {
-                 currentImageIndex = (currentImageIndex - 1 + galleryData.length) % galleryData.length; // Loop safely
-                 updateModalContent(currentImageIndex);
+                currentImageIndex = (currentImageIndex - 1 + galleryData.length) % galleryData.length; // Loop safely
+                updateModalContent(currentImageIndex);
             }
 
             function showNextImage() {
-                 currentImageIndex = (currentImageIndex + 1) % galleryData.length; // Loop safely
-                 updateModalContent(currentImageIndex);
+                currentImageIndex = (currentImageIndex + 1) % galleryData.length; // Loop safely
+                updateModalContent(currentImageIndex);
             }
 
             // --- Swipe Gesture Handlers ---
@@ -457,11 +475,11 @@
             }
 
             function handleTouchMove(evt) {
-                 // We store the end coordinate on move to potentially check during move,
-                 // but the main logic happens on touchend.
-                 // Prevent scroll only if swiping horizontally enough? Might be complex.
-                 // For simplicity, we just record the endpoint here.
-                 touchEndX = evt.changedTouches[0].clientX;
+                // We store the end coordinate on move to potentially check during move,
+                // but the main logic happens on touchend.
+                // Prevent scroll only if swiping horizontally enough? Might be complex.
+                // For simplicity, we just record the endpoint here.
+                touchEndX = evt.changedTouches[0].clientX;
             }
 
             function handleTouchEnd(evt) {
@@ -489,4 +507,5 @@
 
     </script>
 </body>
+
 </html>
