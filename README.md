@@ -1,6 +1,6 @@
 # Bogdan Barbulescu's Landscape Photography
 
-[![GitHub Pages Deploy](https://img.shields.io/github/deployments/your-username/your-repo-name/github-pages?label=Website&logo=github)](https://your-username.github.io/your-repo-name/) <!-- Optional: Replace with your actual username/repo for a live status badge -->
+[![GitHub Pages Deploy](https://img.shields.io/github/deployments/bogdanbarbulescu/photo/github-pages?label=Website&logo=github)](https://bogdanbarbulescu.github.io/photo/) <!-- Optional: Replace with your actual username/repo for a live status badge -->
 
 Welcome to the repository for my personal landscape photography website, hosted using GitHub Pages. This site showcases my journeys and captures of the natural world.
 
@@ -18,15 +18,15 @@ This website serves as a visual portfolio of my landscape photography work. It's
 
 *   To showcase my landscape photography portfolio.
 *   To share my passion for nature and the outdoors.
-*   To practice web development skills (if applicable).
+*   To practice web development skills.
 *   To provide a central hub for my photographic work online.
 
 ---
 
 ## ✨ Features
 
-*   **Galleries:** Browse photos organized by [Location/Theme/Year - Edit as appropriate].
-*   **High-Resolution Images:** View detailed images (consider adding lightbox functionality).
+*   **Galleries:** Browse photos organized by Theme.
+*   **High-Resolution Images:** View detailed images.
 *   **Responsive Design:** Optimized for viewing on desktops, tablets, and mobile devices.
 *   **About Me:** Learn a little more about the photographer behind the lens.
 *   **Contact:** Information on how to get in touch.
