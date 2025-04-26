@@ -4,7 +4,7 @@
 
 Welcome to the repository for my personal landscape photography website, hosted using GitHub Pages. This site showcases my journeys and captures of the natural world.
 
-**[View the Live Website](https://your-username.github.io/your-repo-name/)**
+**[View the Live Website](https://bogdanbarbulescu.github.io/photo/)**
 
 <!-- Optional: Add a screenshot or a favorite photo here! -->
 ![Website Screenshot/Representative Photo](path/to/your/screenshot_or_photo.jpg) <!-- E.g., /assets/images/readme-preview.jpg -->
