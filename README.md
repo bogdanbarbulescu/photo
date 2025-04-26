@@ -1,4 +1,4 @@
-# [Your Name]'s Landscape Photography / [Your Website Name]
+# Bogdan Barbuescu's Landscape Photography
 
 [![GitHub Pages Deploy](https://img.shields.io/github/deployments/your-username/your-repo-name/github-pages?label=Website&logo=github)](https://your-username.github.io/your-repo-name/) <!-- Optional: Replace with your actual username/repo for a live status badge -->
 
