@@ -12,128 +12,166 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
         integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <!-- Custom CSS -->
+    <!-- Custom CSS (Assume style.css has .navbar-scrolled, .hide-item, .active-filter) -->
     <link rel="stylesheet" href="style.css">
     <style>
-        /* --- Add styles for Gallery Modal --- */
-        #galleryModal .modal-dialog {
-            max-width: 90vw;
-            /* Allow modal to be wider on large screens */
+        /* --- Gallery & Modal Specific Styles --- */
+        body {
+            background-color: #212529; /* Ensure body background matches dark theme */
         }
 
-        @media (min-width: 992px) {
-            #galleryModal .modal-dialog {
-                max-width: 800px;
-                /* Or your preferred max width */
-            }
+        .page-content {
+            padding-top: calc(56px + 2rem); /* Adjust based on final navbar height + desired space */
+            min-height: calc(100vh - 56px - 90px); /* Adjust footer height (approx 90px) */
         }
 
-        #modalImage {
-            max-width: 100%;
-            /* Ensure image doesn't overflow horizontally */
-            max-height: 75vh;
-            /* Limit image height */
-            object-fit: contain;
-            /* Scale image while preserving aspect ratio */
+        /* Filter buttons */
+        #gallery-filters .btn {
+             margin: 0.2rem;
+        }
+
+        /* Portfolio Item & Box Styling */
+        .portfolio-item {
+            position: relative;
+            overflow: hidden; /* Ensure caption stays within */
+        }
+        .portfolio-box {
             display: block;
-            margin: 0 auto;
-            cursor: grab;
-            /* Indicate swipe possibility */
+            position: relative;
+            text-decoration: none;
         }
-
-        #modalImage:active {
-            cursor: grabbing;
-        }
-
-        #galleryModal .modal-body button {
-            z-index: 10;
-            opacity: 0.7;
-            transition: opacity 0.2s ease-in-out;
-        }
-
-        #galleryModal .modal-body button:hover {
-            opacity: 1;
-        }
-
-        #galleryModal .modal-header,
-        #galleryModal .modal-footer {
-            border-color: rgba(255, 255, 255, 0.2);
-        }
-
-        /* Prevent selecting image during swipe */
-        #modalImage {
+        .portfolio-box img {
+            display: block; /* Remove extra space below image */
+            width: 100%;
+            height: auto;
+            transition: transform 0.3s ease;
+             /* --- Image Protection CSS --- */
             user-select: none;
             -webkit-user-select: none;
             -ms-user-select: none;
             -moz-user-select: none;
             -webkit-user-drag: none;
+            -webkit-touch-callout: none; /* Prevent long-press menu on iOS */
+            /* pointer-events: none; /* DO NOT USE globally - prevents clicks/hovers. Use on overlay if needed */
         }
+         .portfolio-box:hover img {
+             transform: scale(1.05); /* Slight zoom on hover */
+         }
+
+        .portfolio-box-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0));
+            color: #fff;
+            padding: 1.5rem 1rem 1rem;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .portfolio-box:hover .portfolio-box-caption {
+            opacity: 1;
+        }
+        .portfolio-box-caption .project-category {
+            font-size: 0.85em;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        .portfolio-box-caption .project-name {
+            font-size: 1.1em;
+            font-weight: bold;
+        }
+
+        /* --- Modal Styles --- */
+        #galleryModal .modal-dialog {
+            max-width: 90vw;
+            transition: max-width 0.3s ease-in-out;
+        }
+        @media (min-width: 992px) { #galleryModal .modal-dialog { max-width: 80vw; } } /* Slightly wider */
+        @media (min-width: 1200px) { #galleryModal .modal-dialog { max-width: 70vw; } }/* Even wider on XL */
+
+        #modalImage {
+            max-width: 100%;
+            max-height: calc(85vh - 100px); /* Adjust based on header/footer height */
+            object-fit: contain;
+            display: block;
+            margin: 0 auto;
+            cursor: grab;
+            transition: max-height 0.3s ease-in-out;
+             /* --- Image Protection CSS (repeated for modal image) --- */
+             user-select: none; -webkit-user-select: none; -ms-user-select: none; -moz-user-select: none;
+             -webkit-user-drag: none; -webkit-touch-callout: none;
+        }
+        #modalImage:active { cursor: grabbing; }
+
+        #galleryModal .modal-body button { /* Prev/Next buttons */
+            z-index: 10; opacity: 0.7; transition: opacity 0.2s ease-in-out;
+            background-color: rgba(0,0,0,0.3); border: none; color: white;
+        }
+        #galleryModal .modal-body button:hover { opacity: 1; background-color: rgba(0,0,0,0.5); }
+
+        #galleryModal .modal-header, #galleryModal .modal-footer { border-color: rgba(255, 255, 255, 0.2); }
+
+        /* --- Fullscreen State Styles --- */
+        #galleryModal.image-is-fullscreen .modal-dialog { max-width: 100vw; height: 100vh; margin: 0; }
+        #galleryModal.image-is-fullscreen .modal-content { background-color: black; border: none; height: 100%; border-radius: 0; }
+        #galleryModal.image-is-fullscreen .modal-header,
+        #galleryModal.image-is-fullscreen .modal-footer,
+        #galleryModal.image-is-fullscreen .modal-body button { display: none; }
+        #galleryModal.image-is-fullscreen .modal-body { padding: 0; height: 100%; display: flex; align-items: center; justify-content: center; }
+        #galleryModal.image-is-fullscreen #modalImage { max-height: 100vh; cursor: default; }
     </style>
 </head>
 
 <body>
 
-    <!-- Navigation Bar (Corrected Structure) -->
+    <!-- Navigation Bar -->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
         <div class="container">
-            <!-- Use white logo version for dark navbar -->
             <a class="navbar-brand" href="index.html#page-top">
                 <img src="assets/images/logo.png" alt="Bogdan Barbulescu Photography Logo" height="50">
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="gallery.html">Gallery</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="journal.html">Journal</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html#about">About</a>
-                    </li>
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="gallery.html">Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link" href="journal.html">Journal</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#about">About</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 
     <!-- Main Content - Gallery Page -->
-    <main class="page-content bg-dark" style="padding-top: 8rem;">
+    <main class="page-content bg-dark text-light">
         <section id="portfolio-gallery" class="py-5">
             <div class="container">
-                <h2 class="text-center mb-4 text-light">Gallery</h2>
-
+                <h2 class="text-center mb-4">Gallery</h2>
 
                 <!-- Filter Buttons -->
                 <div id="gallery-filters" class="text-center mb-5">
-                    <button class="btn btn-outline-light btn-sm filter-button active-filter"
-                        data-filter="all">All</button>
-                    <button class="btn btn-outline-light btn-sm filter-button"
-                        data-filter="mountains">Mountains</button>
+                    <button class="btn btn-outline-light btn-sm filter-button active-filter" data-filter="all">All</button>
+                    <button class="btn btn-outline-light btn-sm filter-button" data-filter="mountains">Mountains</button>
                     <button class="btn btn-outline-light btn-sm filter-button" data-filter="forests">Forests</button>
                     <button class="btn btn-outline-light btn-sm filter-button" data-filter="sunrises">Sunrises</button>
                     <button class="btn btn-outline-light btn-sm filter-button" data-filter="sunsets">Sunsets</button>
-                    <button class="btn btn-outline-light btn-sm filter-button"
-                        data-filter="waterfalls">Waterfalls</button>
+                    <button class="btn btn-outline-light btn-sm filter-button" data-filter="waterfalls">Waterfalls</button>
                     <button class="btn btn-outline-light btn-sm filter-button" data-filter="aurora">Aurora</button>
                     <button class="btn btn-outline-light btn-sm filter-button" data-filter="bw">B&W</button>
-                    <!-- Add more categories as needed -->
                 </div>
 
                 <!-- Gallery Grid -->
-                <div class="row g-4 portfolio-container"> <!-- Using g-4 for spacing -->
+                <div class="row g-4 portfolio-container">
 
                     <!-- Item 1: Mountains -->
-                    <div class="col-lg-4 col-sm-6 portfolio-item mountains">
-                        <a class="portfolio-box" href="assets/images/bucegi.jpg"
-                            data-large-src="assets/images/bucegi.jpg" data-category="Mountains" data-title="Giants">
-                            <img class="img-fluid" src="assets/images/bucegi.jpg" alt="Bucegi" />
+                    <div class="col-lg-4 col-md-6 portfolio-item mountains">
+                        <a class="portfolio-box" href="assets/images/bucegi.jpg" data-large-src="assets/images/bucegi.jpg" data-category="Mountains" data-title="Giants">
+                            <img class="img-fluid" src="assets/images/bucegi.jpg" alt="Bucegi Mountains panoramic view" />
                             <div class="portfolio-box-caption">
                                 <div class="project-category text-white-50">Mountains</div>
                                 <div class="project-name">Giants</div>
@@ -142,36 +180,31 @@
                     </div>
 
                     <!-- Item 2: Waterfalls -->
-                    <div class="col-lg-4 col-sm-6 portfolio-item waterfalls">
-                        <a class="portfolio-box" href="assets/images/IMG_hero.webp"
-                            data-large-src="assets/images/IMG_hero.webp" data-category="Waterfalls"
-                            data-title="Waterfalls">
-                            <img class="img-fluid" src="assets/images/IMG_hero.webp" alt="Bucegi" />
+                    <div class="col-lg-4 col-md-6 portfolio-item waterfalls">
+                        <a class="portfolio-box" href="assets/images/IMG_hero.webp" data-large-src="assets/images/IMG_hero.webp" data-category="Waterfalls" data-title="Cascading Falls">
+                            <img class="img-fluid" src="assets/images/IMG_hero.webp" alt="Waterfall cascading over rocks in a forest" />
                             <div class="portfolio-box-caption">
                                 <div class="project-category text-white-50">Waterfalls</div>
-                                <div class="project-name">Waterfalls</div>
+                                <div class="project-name">Cascading Falls</div>
                             </div>
                         </a>
                     </div>
 
                     <!-- Item 3: Mountains -->
-                    <div class="col-lg-4 col-sm-6 portfolio-item mountains">
-                        <a class="portfolio-box" href="assets/images/frozen.jpg"
-                            data-large-src="assets/images/frozen.jpg" data-category="Mountains" data-title="Winter">
-                            <img class="img-fluid" src="assets/images/frozen.jpg" alt="Snowy Peaks" />
+                    <div class="col-lg-4 col-md-6 portfolio-item mountains">
+                        <a class="portfolio-box" href="assets/images/frozen.jpg" data-large-src="assets/images/frozen.jpg" data-category="Mountains" data-title="Winter Peaks">
+                            <img class="img-fluid" src="assets/images/frozen.jpg" alt="Snow covered mountain peaks in winter" />
                             <div class="portfolio-box-caption">
                                 <div class="project-category text-white-50">Mountains</div>
-                                <div class="project-name">Giants</div>
+                                <div class="project-name">Winter Peaks</div>
                             </div>
                         </a>
                     </div>
 
-                    <!-- Item 4: Aurora  -->
-                    <div class="col-lg-4 col-sm-6 portfolio-item aurora">
-                        <a class="portfolio-box" href="assets/images/aurora.jpg"
-                            data-large-src="assets/images/aurora.jpg" data-category="Aurora"
-                            data-title="Chasing Aurora">
-                            <img class="img-fluid" src="assets/images/aurora.jpg" alt="Chasing Aurora" />
+                    <!-- Item 4: Aurora -->
+                    <div class="col-lg-4 col-md-6 portfolio-item aurora">
+                        <a class="portfolio-box" href="assets/images/aurora.jpg" data-large-src="assets/images/aurora.jpg" data-category="Aurora" data-title="Chasing Aurora">
+                            <img class="img-fluid" src="assets/images/aurora.jpg" alt="Green aurora borealis over a dark landscape" />
                             <div class="portfolio-box-caption">
                                 <div class="project-category text-white-50">Aurora</div>
                                 <div class="project-name">Chasing Aurora</div>
@@ -179,80 +212,63 @@
                         </a>
                     </div>
 
-                    <!-- Item 5: Sunrises  -->
-                    <div class="col-lg-4 col-sm-6 portfolio-item sunrises">
-                        <a class="portfolio-box" href="assets/images/nature4.webp"
-                            data-large-src="assets/images/nature4.webp" data-category="Sunrises"
-                            data-title="Coastal Sunrise"> <!-- Changed title -->
-                            <img class="img-fluid" src="assets/images/nature4.webp" alt="Sunrises" />
+                    <!-- Item 5: Sunrises -->
+                    <div class="col-lg-4 col-md-6 portfolio-item sunrises">
+                        <a class="portfolio-box" href="assets/images/nature4.webp" data-large-src="assets/images/nature4.webp" data-category="Sunrises" data-title="Coastal Sunrise">
+                            <img class="img-fluid" src="assets/images/nature4.webp" alt="Sunrise over a calm ocean coastline" />
                             <div class="portfolio-box-caption">
                                 <div class="project-category text-white-50">Sunrises</div>
-                                <div class="project-name">Sunrises</div>
+                                <div class="project-name">Coastal Sunrise</div>
                             </div>
                         </a>
                     </div>
-                    
-                    <!-- Item 6: Sunsets  -->
-                    <div class="col-lg-4 col-sm-6 portfolio-item sunsets">
-                        <a class="portfolio-box" href="assets/images/road.jpg" data-large-src="assets/images/road.jpg"
-                            data-category="Sunsets" data-title="Desert Sunset"> <!-- Changed title -->
-                            <img class="img-fluid" src="assets/images/road.jpg" alt="Desert Sunset" />
+
+                    <!-- Item 6: Sunsets -->
+                    <div class="col-lg-4 col-md-6 portfolio-item sunsets">
+                        <a class="portfolio-box" href="assets/images/road.jpg" data-large-src="assets/images/road.jpg" data-category="Sunsets" data-title="Desert Road Sunset">
+                            <img class="img-fluid" src="assets/images/road.jpg" alt="Straight desert road leading towards a vibrant sunset" />
                             <div class="portfolio-box-caption">
                                 <div class="project-category text-white-50">Sunsets</div>
-                                <div class="project-name">Sunset</div>
+                                <div class="project-name">Desert Road Sunset</div>
                             </div>
                         </a>
                     </div>
-
-                    <!-- === IMPORTANT: Add data-* attributes to ALL your items === -->
-
-                </div> <!-- /.row .portfolio-container -->
-            </div> <!-- /.container -->
+                    <!-- Add more items here, ensuring they have `portfolio-item`, category class, and the `portfolio-box` structure -->
+                </div>
+            </div>
         </section>
     </main>
 
     <!-- Footer -->
-    <footer class="py-5 bg-dark text-center text-white-50">
+    <footer class="py-4 bg-dark text-center text-white-50 border-top border-secondary">
         <div class="container">
             <div class="mb-3">
-                <a href="#" class="text-white-50 me-3"><i class="fab fa-instagram fa-lg"></i></a>
-                <a href="#" class="text-white-50 me-3"><i class="fab fa-youtube fa-lg"></i></a>
-                <!-- Match other pages -->
-                <a href="#" class="text-white-50"><i class="fab fa-facebook-f fa-lg"></i></a>
+                <a href="https://instagram.com/your_username" target="_blank" rel="noopener noreferrer" class="text-white-50 me-3 fs-5" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://youtube.com/your_channel" target="_blank" rel="noopener noreferrer" class="text-white-50 me-3 fs-5" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                <a href="https://facebook.com/your_page" target="_blank" rel="noopener noreferrer" class="text-white-50 fs-5" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
             </div>
-            <p class="mb-0 small">© 2025 Bogdan Barbulescu Photography. All Rights Reserved.</p>
+            <p class="mb-0 small">© <span id="current-year"></span> Bogdan Barbulescu Photography. All Rights Reserved.</p>
         </div>
     </footer>
 
     <!-- Gallery Modal -->
     <div class="modal fade" id="galleryModal" tabindex="-1" aria-labelledby="galleryModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-dialog modal-xl modal-dialog-centered"> <!-- Use modal-xl for wider default -->
             <div class="modal-content bg-dark text-light">
                 <div class="modal-header border-secondary">
                     <h5 class="modal-title" id="modalTitle">Image Title</h5>
-
-                    <!-- === ADD FULLSCREEN BUTTON HERE === -->
-                    <button type="button" class="btn btn-outline-light btn-sm ms-auto me-2" id="modalFullscreenBtn"
-                        aria-label="Toggle fullscreen">
-                        <i class="fas fa-expand"></i> <!-- Initial icon -->
+                    <button type="button" class="btn btn-outline-light btn-sm ms-auto me-2" id="modalFullscreenBtn" title="Enter fullscreen" aria-label="Enter fullscreen">
+                        <i class="fas fa-expand"></i>
                     </button>
-                    <!-- === END FULLSCREEN BUTTON === -->
-
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
-                        aria-label="Close"></button>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body text-center position-relative">
+                <div class="modal-body text-center position-relative p-1"> <!-- Slightly reduced padding -->
                     <img src="" class="img-fluid" id="modalImage" alt="Enlarged Gallery Image">
-
                     <!-- Carousel Controls -->
-                    <button
-                        class="btn btn-outline-light position-absolute top-50 start-0 translate-middle-y ms-2 d-none d-md-block"
-                        type="button" id="modalPrev" aria-label="Previous image">
+                    <button class="btn btn-lg position-absolute top-50 start-0 translate-middle-y ms-2" type="button" id="modalPrev" aria-label="Previous image">
                         <i class="fas fa-chevron-left"></i>
                     </button>
-                    <button
-                        class="btn btn-outline-light position-absolute top-50 end-0 translate-middle-y me-2 d-none d-md-block"
-                        type="button" id="modalNext" aria-label="Next image">
+                    <button class="btn btn-lg position-absolute top-50 end-0 translate-middle-y me-2" type="button" id="modalNext" aria-label="Next image">
                         <i class="fas fa-chevron-right"></i>
                     </button>
                 </div>
@@ -263,249 +279,353 @@
         </div>
     </div>
 
-    <!-- Bootstrap JS Bundle -->
+    <!-- Bootstrap JS Bundle (includes Popper) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
 
     <!-- Custom JS -->
     <script>
-        // --- Consolidated script.js content for this page ---
-
         document.addEventListener('DOMContentLoaded', () => {
 
-            // --- Configuration ---
-            const SCROLL_OFFSET_BUFFER = 50;
-            const SWIPE_THRESHOLD = 50; // Min pixels for swipe gesture
+            // --- Config ---
+            const SWIPE_THRESHOLD = 50;
 
             // --- Cache Selectors ---
             const mainNav = document.getElementById('mainNav');
-            const navbarToggler = document.querySelector('.navbar-toggler');
-            const navbarCollapse = document.querySelector('.navbar-collapse');
+            const navbarToggler = mainNav?.querySelector('.navbar-toggler'); // Safer selection
+            const navbarCollapse = mainNav?.querySelector('.navbar-collapse');
             const galleryModalElement = document.getElementById('galleryModal');
             let modalInstance = null;
-            let modalImageElement = null;
-            let modalTitleElement = null;
-            let modalCaptionElement = null;
-            let modalPrevButton = null;
-            let modalNextButton = null;
+            let modalImageElement = document.getElementById('modalImage');
+            let modalTitleElement = document.getElementById('modalTitle');
+            let modalCaptionElement = document.getElementById('modalCaption');
+            let modalPrevButton = document.getElementById('modalPrev');
+            let modalNextButton = document.getElementById('modalNext');
+            let modalFullscreenBtn = document.getElementById('modalFullscreenBtn');
 
+            // --- Init Bootstrap Modal ---
             if (galleryModalElement) {
-                modalInstance = new bootstrap.Modal(galleryModalElement);
-                modalImageElement = document.getElementById('modalImage');
-                modalTitleElement = document.getElementById('modalTitle');
-                modalCaptionElement = document.getElementById('modalCaption');
-                modalPrevButton = document.getElementById('modalPrev');
-                modalNextButton = document.getElementById('modalNext');
+                try {
+                    modalInstance = new bootstrap.Modal(galleryModalElement);
+                } catch (error) {
+                    console.error("Error initializing Bootstrap Modal. Make sure Bootstrap's JavaScript is loaded.", error);
+                    // Disable modal related elements if init fails
+                    galleryModalElement = null; modalImageElement = null; modalTitleElement = null;
+                    modalCaptionElement = null; modalPrevButton = null; modalNextButton = null; modalFullscreenBtn = null;
+                }
+            } else {
+                 console.warn("Gallery Modal element #galleryModal not found.");
             }
 
             // --- Gallery Data & State ---
             let galleryData = [];
-            let currentImageIndex = 0;
+            let currentImageIndex = -1; // Use -1 to indicate no image selected initially
             let touchStartX = 0;
             let touchEndX = 0;
 
             // --- Initialize Features ---
-            if (mainNav) {
-                initNavbarShrink(mainNav);
-            }
-            initImageProtection();
-            initSmoothScroll(mainNav);
-            initScrollspy(mainNav, SCROLL_OFFSET_BUFFER); // Won't do much on gallery page unless sections added
+            if (mainNav) initNavbarShrink(mainNav);
+            initImageProtection(); // Prevent right-click / selection
+            initSmoothScroll(); // No nav needed if just targeting page top/other anchors
             initGalleryFilter();
-            initGalleryModal(); // Initializes modal and collects data
+            initGalleryModal(); // Setup modal triggers and data collection
+            initFooterYear(); // Set footer year
 
-            // --- Feature Functions ---
+            // --- Global Listeners ---
+            document.addEventListener('fullscreenchange', handleFullscreenChange);
+            document.addEventListener('webkitfullscreenchange', handleFullscreenChange);
+            document.addEventListener('mozfullscreenchange', handleFullscreenChange);
+            document.addEventListener('MSFullscreenChange', handleFullscreenChange);
+            document.addEventListener('keydown', handleGlobalKeyDown); // Single listener for all keydowns
+
+
+            // --- Feature Implementations ---
 
             function initNavbarShrink(navElement) {
                 const shrink = () => {
-                    if (!navElement) return;
-                    if (window.pageYOffset === 0) {
+                    // Ensure navElement still exists if nav is removed dynamically
+                    if (!document.body.contains(navElement)) {
+                         document.removeEventListener('scroll', shrink); // Clean up listener
+                         return;
+                    }
+                    if (window.scrollY < 50) { // Use scrollY and threshold
                         navElement.classList.remove('navbar-scrolled');
                     } else {
                         navElement.classList.add('navbar-scrolled');
                     }
                 };
-                shrink();
-                document.addEventListener('scroll', shrink);
+                // Add scroll listener only if nav exists
+                 if (navElement) {
+                     shrink(); // Initial check
+                    document.addEventListener('scroll', shrink, { passive: true }); // Use passive listener
+                 }
             }
 
             function initImageProtection() {
-                const protectedImages = document.querySelectorAll('img');
-                protectedImages.forEach(img => {
-                    img.addEventListener('contextmenu', (e) => e.preventDefault());
-                    img.style.userDrag = 'none';
-                    img.style.webkitUserDrag = 'none';
+                // Target gallery thumbs and modal image specifically
+                const imagesToProtect = '.portfolio-container img, #modalImage';
+
+                document.querySelectorAll(imagesToProtect).forEach(img => {
+                    // Prevent Right Click Context Menu
+                    img.addEventListener('contextmenu', (e) => {
+                        e.preventDefault();
+                        // console.log('Context menu prevented.'); // Optional log
+                    });
+                     // Note: CSS handles user-select and drag prevention
                 });
             }
 
-            function initSmoothScroll(navElement) {
-                document.querySelectorAll('a.nav-link[href^="#"]').forEach(anchor => {
+             function initSmoothScroll() {
+                 // Simplified: Targets any link starting with # but not just #
+                 document.querySelectorAll('a[href^="#"]:not([href="#"])').forEach(anchor => {
                     anchor.addEventListener('click', function (e) {
                         const targetId = this.getAttribute('href');
-                        if (targetId.length <= 1) return;
-                        const targetElement = document.querySelector(targetId);
-                        if (targetElement) {
-                            e.preventDefault();
-                            const navbarHeight = navElement ? navElement.offsetHeight : 0;
-                            const elementPosition = targetElement.getBoundingClientRect().top;
-                            const offsetPosition = window.pageYOffset + elementPosition - navbarHeight;
-                            window.scrollTo({ top: offsetPosition, behavior: "smooth" });
-                            if (navbarCollapse && navbarCollapse.classList.contains('show') && navbarToggler) {
-                                navbarToggler.click();
+                        let targetElement;
+                        // Only process if it's a same-page anchor
+                        if (targetId.startsWith('#')) {
+                            try { targetElement = document.querySelector(targetId); } catch (error) { return; }
+
+                            if (targetElement) {
+                                e.preventDefault();
+                                const navHeight = mainNav ? mainNav.offsetHeight : 0;
+                                const elementTop = targetElement.getBoundingClientRect().top + window.scrollY;
+                                window.scrollTo({ top: elementTop - navHeight, behavior: "smooth" });
+
+                                // Close mobile navbar if open
+                                if (navbarCollapse?.classList.contains('show') && navbarToggler) {
+                                    const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse);
+                                    if (bsCollapse) bsCollapse.hide(); else navbarToggler.click();
+                                }
                             }
-                        }
+                        } // Else: let the browser handle the navigation (e.g., to index.html#about)
                     });
                 });
-            }
-
-            function initScrollspy(navElement, offsetBuffer) {
-                // Scrollspy requires sections with IDs on the page to work.
-                // Might not be relevant for the gallery page itself unless you add sections.
-                const sections = document.querySelectorAll('main section[id]');
-                const navLinks = document.querySelectorAll('#navbarNav .nav-link[href^="#"]');
-                if (sections.length === 0 || navLinks.length === 0) return;
-
-                const updateActiveLink = () => { /* ... scrollspy logic ... */ }; // (Keep logic if needed)
-                window.addEventListener('scroll', updateActiveLink);
-                updateActiveLink();
             }
 
             function initGalleryFilter() {
                 const filterContainer = document.querySelector('#gallery-filters');
-                const galleryItems = document.querySelectorAll('.portfolio-container .portfolio-item');
+                const galleryItems = document.querySelectorAll('.portfolio-container > .portfolio-item'); // Direct children
                 if (!filterContainer || galleryItems.length === 0) return;
 
-                // Define .hide-item in style.css: .hide-item { display: none !important; }
-
                 filterContainer.addEventListener('click', (event) => {
-                    if (event.target.classList.contains('filter-button')) {
+                    if (event.target.matches('.filter-button')) {
                         const clickedButton = event.target;
-                        filterContainer.querySelectorAll('.filter-button').forEach(btn => btn.classList.remove('active-filter'));
+                        filterContainer.querySelectorAll('.filter-button.active-filter').forEach(btn => btn.classList.remove('active-filter'));
                         clickedButton.classList.add('active-filter');
                         const filterValue = clickedButton.getAttribute('data-filter');
+
                         galleryItems.forEach(item => {
-                            if (filterValue === 'all' || item.classList.contains(filterValue)) {
-                                item.classList.remove('hide-item');
-                            } else {
-                                item.classList.add('hide-item');
-                            }
+                            // Use transition for smoother filtering (requires CSS)
+                            // Example CSS: .portfolio-item { transition: opacity 0.3s ease, transform 0.3s ease; }
+                            //             .hide-item { opacity: 0; transform: scale(0.9); pointer-events: none; height: 0; margin: 0; padding: 0; overflow: hidden; }
+                            const shouldShow = (filterValue === 'all' || item.classList.contains(filterValue));
+                            item.classList.toggle('hide-item', !shouldShow);
+                            // Force reflow for transition? Sometimes needed. item.offsetHeight;
                         });
                     }
                 });
-                // Ensure initial state matches active filter
-                const initialActiveFilter = filterContainer.querySelector('.filter-button.active-filter');
-                if (initialActiveFilter && initialActiveFilter.getAttribute('data-filter') !== 'all') {
-                    const initialFilterValue = initialActiveFilter.getAttribute('data-filter');
-                    galleryItems.forEach(item => {
-                        if (!item.classList.contains(initialFilterValue)) {
-                            item.classList.add('hide-item');
-                        }
-                    });
-                }
+                 // Apply initial filter
+                 const initialFilter = filterContainer.querySelector('.filter-button.active-filter')?.getAttribute('data-filter') || 'all';
+                  if(initialFilter !== 'all') {
+                     galleryItems.forEach(item => item.classList.toggle('hide-item', !item.classList.contains(initialFilter)));
+                  }
             }
 
-            /**
-             * Initializes the modal carousel for the gallery, including swipe.
-             */
             function initGalleryModal() {
-                if (!galleryModalElement || !modalImageElement || !modalPrevButton || !modalNextButton) return;
+                // Ensure all required modal elements are available
+                 if (!galleryModalElement || !modalInstance || !modalImageElement || !modalPrevButton || !modalNextButton || !modalFullscreenBtn) {
+                     console.warn("Cannot initialize Gallery Modal - one or more required elements missing or Bootstrap Modal failed.");
+                     return;
+                 }
 
-                const portfolioBoxes = document.querySelectorAll('.portfolio-container .portfolio-box');
-                galleryData = []; // Reset
+                const portfolioContainer = document.querySelector('.portfolio-container');
+                if (!portfolioContainer) return;
+                const portfolioBoxes = portfolioContainer.querySelectorAll(':scope > .portfolio-item > .portfolio-box');
 
+                galleryData = []; // Reset data
                 portfolioBoxes.forEach((box, index) => {
+                    const thumbImg = box.querySelector('img');
                     galleryData.push({
-                        largeSrc: box.getAttribute('data-large-src') || box.href,
-                        title: box.getAttribute('data-title') || 'Image',
-                        category: box.getAttribute('data-category') || ''
+                        largeSrc: box.getAttribute('data-large-src') || box.href || '#',
+                        title: box.getAttribute('data-title') || 'Gallery Image',
+                        category: box.getAttribute('data-category') || '',
+                        alt: thumbImg?.alt || box.getAttribute('data-title') || 'Gallery Image ' + (index + 1),
+                        element: box // Reference to the trigger element
                     });
-                    box.setAttribute('data-index', index);
+                    box.setAttribute('data-index', index); // Store index for quick lookup
 
                     box.addEventListener('click', (e) => {
+                        const parentItem = box.closest('.portfolio-item');
+                        // Do not open if the parent item is hidden by filters
+                        if (parentItem && (parentItem.classList.contains('hide-item') || getComputedStyle(parentItem).display === 'none')) {
+                            return;
+                        }
                         e.preventDefault();
-                        currentImageIndex = parseInt(e.currentTarget.getAttribute('data-index'), 10);
-                        updateModalContent(currentImageIndex);
-                        modalInstance.show();
+                        const clickedIndex = parseInt(e.currentTarget.getAttribute('data-index'), 10);
+                        openModalAtIndex(clickedIndex);
                     });
                 });
 
-                // Desktop Navigation
+                // Attach listeners to modal controls
                 modalPrevButton.addEventListener('click', showPreviousImage);
                 modalNextButton.addEventListener('click', showNextImage);
+                modalFullscreenBtn.addEventListener('click', toggleFullscreen);
 
-                // Keyboard Navigation
-                galleryModalElement.addEventListener('keydown', (e) => {
-                    if (modalInstance && galleryModalElement.classList.contains('show')) { // Only when modal is shown
-                        if (e.key === 'ArrowLeft') showPreviousImage();
-                        else if (e.key === 'ArrowRight') showNextImage();
-                    }
+                // Swipe listeners on the image
+                modalImageElement.addEventListener('touchstart', handleTouchStart, { passive: true });
+                modalImageElement.addEventListener('touchmove', handleTouchMove, { passive: true }); // passive:true, logic on end
+                modalImageElement.addEventListener('touchend', handleTouchEnd);
+
+                // Modal show/hide events
+                galleryModalElement.addEventListener('shown.bs.modal', () => {
+                     updateFullscreenButtonIcon();
+                     // Potentially focus an element for accessibility, e.g., the modal itself or the image
+                     // galleryModalElement.focus(); // Check accessibility implications
+                 });
+                galleryModalElement.addEventListener('hidden.bs.modal', () => {
+                    if (isElementFullscreen(modalImageElement)) { exitFullscreen(); } // Exit FS if modal closed
+                    updateFullscreenButtonIcon(); // Reset icon
+                    currentImageIndex = -1; // Reset index when modal closes
                 });
-
-                // Mobile Swipe Navigation Listeners (on the image itself)
-                modalImageElement.addEventListener('touchstart', handleTouchStart, false);
-                modalImageElement.addEventListener('touchmove', handleTouchMove, false);
-                modalImageElement.addEventListener('touchend', handleTouchEnd, false);
             }
 
+             function openModalAtIndex(index) {
+                 if (index < 0 || index >= galleryData.length) {
+                     console.error("Invalid index for opening modal:", index);
+                     return;
+                 }
+                 currentImageIndex = index;
+                 updateModalContent(currentImageIndex);
+                 if(modalInstance) modalInstance.show();
+             }
+
+
             function updateModalContent(index) {
-                if (index < 0 || index >= galleryData.length || !modalImageElement) return;
-                const data = galleryData[index];
-                // Preload next/prev images slightly? Maybe too complex for now.
-                modalImageElement.src = data.largeSrc;
-                modalImageElement.alt = data.title;
-                if (modalTitleElement) modalTitleElement.textContent = data.title;
-                if (modalCaptionElement) modalCaptionElement.textContent = data.category;
+                 if (index < 0 || index >= galleryData.length || !modalImageElement || !modalTitleElement || !modalCaptionElement) return;
+
+                 const data = galleryData[index];
+                 // Add loading state?
+                 // modalImageElement.style.opacity = '0.5';
+
+                 modalImageElement.src = data.largeSrc;
+                 modalImageElement.alt = data.alt;
+                 modalTitleElement.textContent = data.title;
+                 modalCaptionElement.textContent = data.category;
+
+                 // modalImageElement.onload = () => { modalImageElement.style.opacity = '1'; };
+                 // modalImageElement.onerror = () => { modalImageElement.style.opacity = '1'; /* Handle error */};
+
+                 // Update button states (disable if only one image?) - Optional
+                 modalPrevButton.disabled = galleryData.length <= 1;
+                 modalNextButton.disabled = galleryData.length <= 1;
+
+                 updateFullscreenButtonIcon(); // Ensure FS button state is correct
             }
 
             function showPreviousImage() {
-                currentImageIndex = (currentImageIndex - 1 + galleryData.length) % galleryData.length; // Loop safely
+                if (galleryData.length === 0) return;
+                const newIndex = (currentImageIndex - 1 + galleryData.length) % galleryData.length;
+                currentImageIndex = newIndex; // Update state first
                 updateModalContent(currentImageIndex);
             }
 
             function showNextImage() {
-                currentImageIndex = (currentImageIndex + 1) % galleryData.length; // Loop safely
+                if (galleryData.length === 0) return;
+                const newIndex = (currentImageIndex + 1) % galleryData.length;
+                currentImageIndex = newIndex; // Update state first
                 updateModalContent(currentImageIndex);
             }
 
-            // --- Swipe Gesture Handlers ---
             function handleTouchStart(evt) {
-                // Use changedTouches[0] as it represents the first finger that started the touch
                 touchStartX = evt.changedTouches[0].clientX;
+                touchEndX = touchStartX; // Reset end coordinate
             }
-
             function handleTouchMove(evt) {
-                // We store the end coordinate on move to potentially check during move,
-                // but the main logic happens on touchend.
-                // Prevent scroll only if swiping horizontally enough? Might be complex.
-                // For simplicity, we just record the endpoint here.
-                touchEndX = evt.changedTouches[0].clientX;
+                touchEndX = evt.changedTouches[0].clientX; // Update end coordinate
+            }
+            function handleTouchEnd() {
+                if (touchStartX === 0 || touchEndX === 0 || Math.abs(touchEndX - touchStartX) < SWIPE_THRESHOLD) {
+                    touchStartX = 0; touchEndX = 0; // Reset if no swipe or not enough distance
+                    return;
+                }
+                if (touchEndX < touchStartX) { showNextImage(); } // Swipe left
+                else { showPreviousImage(); } // Swipe right
+                touchStartX = 0; touchEndX = 0; // Reset after swipe action
             }
 
-            function handleTouchEnd(evt) {
-                // Check if touchEndX was updated (i.e., a move happened)
-                if (touchEndX === 0) return; // No move detected
 
-                const deltaX = touchEndX - touchStartX;
+            // --- Fullscreen ---
+            function isFullscreen() { return !!(document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement); }
+            function isElementFullscreen(el) { if (!el) return false; return (document.fullscreenElement === el || document.webkitFullscreenElement === el || document.mozFullScreenElement === el || document.msFullscreenElement === el); }
 
-                if (Math.abs(deltaX) > SWIPE_THRESHOLD) { // Check if swipe distance is significant
-                    if (deltaX < 0) {
-                        // Swipe Left
-                        showNextImage();
-                    } else {
-                        // Swipe Right
-                        showPreviousImage();
-                    }
+            function enterFullscreen() {
+                const el = modalImageElement;
+                if (!el) return;
+                try {
+                    const promise = el.requestFullscreen?.() || el.webkitRequestFullscreen?.() || el.mozRequestFullScreen?.() || el.msRequestFullscreen?.();
+                    if (promise instanceof Promise) promise.catch(err => console.error(`FS Enter Error: ${err.message}`, err));
+                } catch (err) { console.error(`FS Enter Exception: ${err.message}`, err); }
+            }
+            function exitFullscreen() {
+                if (!isFullscreen()) return;
+                try {
+                    const promise = document.exitFullscreen?.() || document.webkitExitFullscreen?.() || document.mozCancelFullScreen?.() || document.msExitFullscreen?.();
+                    if (promise instanceof Promise) promise.catch(err => console.error(`FS Exit Error: ${err.message}`, err));
+                } catch (err) { console.error(`FS Exit Exception: ${err.message}`, err); }
+            }
+            function toggleFullscreen() { if (modalImageElement) { if (!isElementFullscreen(modalImageElement)) enterFullscreen(); else exitFullscreen(); } }
+
+            function updateFullscreenButtonIcon() {
+                if (!modalFullscreenBtn) return;
+                const icon = modalFullscreenBtn.querySelector('i'); if (!icon) return;
+                const isFS = isElementFullscreen(modalImageElement);
+                icon.classList.toggle('fa-expand', !isFS);
+                icon.classList.toggle('fa-compress', isFS);
+                modalFullscreenBtn.setAttribute('aria-label', isFS ? 'Exit fullscreen' : 'Enter fullscreen');
+                modalFullscreenBtn.title = isFS ? 'Exit fullscreen' : 'Enter fullscreen';
+            }
+
+            function handleFullscreenChange() {
+                 const isFS = isElementFullscreen(modalImageElement);
+                 updateFullscreenButtonIcon(); // Sync button
+                 galleryModalElement?.classList.toggle('image-is-fullscreen', isFS); // Toggle CSS class
+            }
+
+
+            // --- Keyboard Navigation ---
+            function handleGlobalKeyDown(e) {
+                // Check if modal is open OR if image is fullscreen (covers both cases)
+                const modalIsOpen = galleryModalElement?.classList.contains('show');
+                const imageIsFullscreen = isElementFullscreen(modalImageElement);
+
+                 if (!modalIsOpen && !imageIsFullscreen) {
+                     return; // Do nothing if neither modal is open nor image is fullscreen
+                 }
+
+                // Prioritize fullscreen navigation if active
+                if (imageIsFullscreen) {
+                    if (e.key === 'ArrowLeft') { e.preventDefault(); showPreviousImage(); }
+                    else if (e.key === 'ArrowRight') { e.preventDefault(); showNextImage(); }
+                    // 'Escape' is handled natively by the browser to exit fullscreen
                 }
+                // Handle modal navigation if modal is open but image is NOT fullscreen
+                else if (modalIsOpen) {
+                     if (e.key === 'ArrowLeft') { e.preventDefault(); showPreviousImage(); }
+                     else if (e.key === 'ArrowRight') { e.preventDefault(); showNextImage(); }
+                     else if (e.key === 'Escape') { if (modalInstance) modalInstance.hide(); } // Close modal on escape
+                     // else if (e.key === 'f' || e.key === 'F') { e.preventDefault(); toggleFullscreen(); } // Optional: F key for fullscreen
+                }
+            }
 
-                // Reset touch coordinates for the next swipe
-                touchStartX = 0;
-                touchEndX = 0;
+
+            // --- Footer ---
+            function initFooterYear() {
+                const yearSpan = document.getElementById('current-year');
+                if (yearSpan) yearSpan.textContent = new Date().getFullYear();
             }
 
         }); // End DOMContentLoaded
-
     </script>
 </body>
-
 </html>

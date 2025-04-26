@@ -505,11 +505,14 @@ footer p {
 }
 
 
-/* style.css */
-
-/* Optional: Style fullscreen button if needed */
-#modalFullscreenBtn {
-    /* Add any specific styling like font-size or padding if desired */
-    padding: 0.25rem 0.5rem; /* Example: make padding smaller */
-    font-size: 0.85em; /* Example: make icon slightly smaller */
+.modal-maximized {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    z-index: 1055; /* Ensure it stays above other elements */
 }
