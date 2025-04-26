@@ -1,4 +1,4 @@
-# Bogdan Barbuescu's Landscape Photography
+# Bogdan Barbulescu's Landscape Photography
 
 [![GitHub Pages Deploy](https://img.shields.io/github/deployments/your-username/your-repo-name/github-pages?label=Website&logo=github)](https://your-username.github.io/your-repo-name/) <!-- Optional: Replace with your actual username/repo for a live status badge -->
 
@@ -40,7 +40,7 @@ This website is built using:
 *   **Framework/Generator:** [Plain HTML/CSS/JS]
 *   **Hosting:** GitHub Pages
 *   **CSS:** [Vanilla CSS | Bootstrap | Tailwind CSS | SASS - Specify]
-*   **JavaScript Libraries (if any):** [e.g., Lightbox2, LazyLoad.js, etc. - List any significant JS libraries]
+*   **JavaScript Libraries (if any):**Lightbox2, LazyLoad.js
 
 
 ---
