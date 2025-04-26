@@ -63,18 +63,8 @@ Please note that contributions regarding the photographic content itself are not
 ## 📜 License
 
 *   **Website Code:** The code used to build this website (HTML, CSS, JavaScript, configuration files, etc.) is licensed under the [MIT License](LICENSE.md). <!-- Choose a license (MIT is common) and add a LICENSE.md file -->
-*   **Photographic Content:** All photographs displayed on this website are **© 2025 Bogdan Barbulescu. All Rights Reserved.** They may not be used, reproduced, distributed, or transmitted in any form or by any means, including photocopying, recording, or other electronic or mechanical methods, without the prior written permission of the photographer. <!-- **IMPORTANT:** Choose your photo license carefully. Options include:
+*   **Photographic Content:** All photographs displayed on this website are **© 2025 Bogdan Barbulescu. All Rights Reserved.** They may not be used, reproduced, distributed, or transmitted in any form or by any means, including photocopying, recording, or other electronic or mechanical methods, without the prior written permission of the photographer. <!--
 
-
-
----
-
-## 📬 Contact
-
-*   **Website:** [Your Portfolio Website Link - Optional if already linked above]
-*   **Email:** [your.email@example.com]
-*   **Instagram:** [@your_instagram_handle](https://instagram.com/your_instagram_handle)
-*   **Other Social Media:** [Link to other relevant profiles]
 
 ---
 
