@@ -31,7 +31,6 @@ This website serves as a visual portfolio of my landscape photography work. It's
 *   **Responsive Design:** Optimized for viewing on desktops, tablets, and mobile devices.
 *   **About Me:** Learn a little more about the photographer behind the lens.
 *   **Contact:** Information on how to get in touch.
-*   **[Add any other specific features - e.g., Blog, Map Integration, etc.]**
 
 ---
 
@@ -39,84 +38,11 @@ This website serves as a visual portfolio of my landscape photography work. It's
 
 This website is built using:
 
-*   **Framework/Generator:** [Plain HTML/CSS/JS | Jekyll | Hugo | Eleventy | Other - Specify what you used]
+*   **Framework/Generator:** [Plain HTML/CSS/JS]
 *   **Hosting:** GitHub Pages
 *   **CSS:** [Vanilla CSS | Bootstrap | Tailwind CSS | SASS - Specify]
 *   **JavaScript Libraries (if any):** [e.g., Lightbox2, LazyLoad.js, etc. - List any significant JS libraries]
-*   **(If using Jekyll/Hugo/etc.) Theme:** [Specify theme name and link if applicable]
 
----
-
-## 🚀 Getting Started (Local Development)
-
-If you want to run a local copy of this website (e.g., for development or testing):
-
-**Prerequisites:**
-
-*   Git
-*   [Ruby and Bundler (if using Jekyll)]
-*   [Node.js and npm/yarn (if using Node-based SSG or build tools)]
-*   [Other dependencies...]
-
-**Installation & Running:**
-
-1.  **Clone the repository:**
-    ```bash
-    git clone https://github.com/your-username/your-repo-name.git
-    cd your-repo-name
-    ```
-
-2.  **Install dependencies:**
-    *   _(If Jekyll):_
-        ```bash
-        bundle install
-        ```
-    *   _(If Node-based):_
-        ```bash
-        npm install
-        # or
-        yarn install
-        ```
-
-3.  **Run the local development server:**
-    *   _(If Jekyll):_
-        ```bash
-        bundle exec jekyll serve --livereload
-        ```
-    *   _(If Node-based - check your package.json):_
-        ```bash
-        npm run dev # or npm start, etc.
-        # or
-        yarn dev # or yarn start, etc.
-        ```
-    *   _(If plain HTML/CSS/JS):_ You might use a simple local server extension in your code editor (like VS Code's Live Server) or Python's built-in server:
-        ```bash
-        python -m http.server
-        # or
-        python3 -m http.server
-        ```
-
-4.  Open your browser and navigate to `http://localhost:[PORT]` (the specific port will be shown in your terminal, often 4000 for Jekyll, 8080/3000 for Node, 8000 for Python).
-
----
-
-## 🖼️ Adding New Photos (For Me / Maintainers)
-
-<!-- Explain your workflow for adding new content. This is helpful for your future self! -->
-
-1.  **Prepare Images:** Resize and optimize photos for the web (e.g., using Photoshop, Lightroom Export, online tools like TinyPNG).
-2.  **Add Image Files:** Place the new image files into the designated directory (e.g., `/assets/images/gallery-name/`).
-3.  **Update Gallery Data:**
-    *   [If plain HTML: Edit the relevant `gallery.html` file.]
-    *   [If Jekyll/Hugo/etc.: Update the corresponding data file (e.g., `_data/galleries.yml`) or create a new markdown post/page.]
-    *   [Make sure to include alt text for accessibility!]
-4.  **Commit and Push:**
-    ```bash
-    git add .
-    git commit -m "Add photos from [Location/Event]"
-    git push origin main # Or your default branch
-    ```
-5.  GitHub Pages will automatically rebuild the site (allow a minute or two).
 
 ---
 
